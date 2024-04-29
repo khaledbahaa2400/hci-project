@@ -1,0 +1,30 @@
+<app-instructor-header></app-instructor-header>
+
+<div class="body">
+    <div class="container">
+        <div class="dropdown-container">
+            <label for="course">Course</label>
+            <select id="course" [(ngModel)]="course" (change)="filterProgressByCourse()">
+                <option *ngFor="let course of instructorCourses" [value]="course.name">{{ course.name }}</option>
+            </select>
+        </div>
+
+        <div class="grid-container">
+            <div class="box" *ngFor="let i of courseProgress">
+                <div class="info">
+                    <div class="label">Name:</div>
+                    <div>{{ i.student.name }}</div>
+                </div>
+
+                <div class="info">
+                    <div class="label">ID: </div>
+                    <div id="id">{{ i.student.id }}</div>
+                </div>
+
+                <div class="progress-bar-container">
+                    <div class="progress-bar" [ngStyle]="{'width': i.progress}"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

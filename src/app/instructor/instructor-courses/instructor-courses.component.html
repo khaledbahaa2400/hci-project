@@ -1,0 +1,40 @@
+<app-instructor-header></app-instructor-header>
+
+<div class="body">
+    <div class="container">
+        <h1 class="title">All Your Courses:</h1>
+
+        <div class="dropdown-container">
+            <label for="dropdown">Year</label>
+            <select id="dropdown" [(ngModel)]="year" (change)="filterCoursesByYear()">
+                <option [ngValue]="1">1</option>
+                <option [ngValue]="2">2</option>
+                <option [ngValue]="3">3</option>
+                <option [ngValue]="4">4</option>
+            </select>
+        </div>
+
+        <div class="grid-container">
+            <div class="box" *ngFor="let course of yearCourses">
+                <div class="info">
+                    <div class="label">Course:</div>
+                    <div id="course">{{ course.name }}</div>
+                </div>
+
+                <div class="info">
+                    <div class="label">Credit Hours: </div>
+                    <div>{{ course.hours }}</div>
+                </div>
+
+                <div class="info">
+                    <div class="label">Capacity: </div>
+                    <div id="capacity">{{ course.capacity }}</div>
+                </div>
+
+                <div class="button-container">
+                    <button type="submit">Edit Course</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
