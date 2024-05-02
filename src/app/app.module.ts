@@ -17,6 +17,9 @@ import { CoursesComponent } from './Student/courses/courses.component';
 import { GradesComponent } from './Student/grades/grades.component';
 import { CourseDetailsComponent } from './Student/course-details/course-details.component';
 import { HeaderComponent } from './Student/header/header.component';
+import { SignUpComponent } from './Registeration/sign-up/sign-up.component';
+import { LogInComponent } from './Registeration/log-in/log-in.component';
+import { RegHeaderComponent } from './Registeration/reg-header/reg-header.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +34,10 @@ import { HeaderComponent } from './Student/header/header.component';
     CoursesComponent,
     GradesComponent,
     CourseDetailsComponent,
-    HeaderComponent
+    HeaderComponent,
+    SignUpComponent,
+    LogInComponent,
+    RegHeaderComponent
   ],
   imports: [
     BrowserModule,
