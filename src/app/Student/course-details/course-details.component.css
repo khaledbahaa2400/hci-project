@@ -1,0 +1,43 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "pt-sans",sans-serif;
+    
+}
+.mycontainer{
+    width: 100%;
+    margin: auto;
+    
+}
+.course_details{
+    width: 60%;  
+    margin: auto;
+   
+ }
+ .course_details h2{
+    margin: 40px 5px;
+ }
+ .weak{
+    border: 5px solid #ddd;
+    width: 100%;
+    border-radius: 10px;
+    margin: 5px;
+    padding-left: 15px;
+ }
+ .weak a{
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+ }
+.weak hr{
+    width: 100px;
+    border: 3px solid grey;
+}
+.weak i{
+    font-size: 20px;
+    margin: 5px;
+    transform: rotateX(180deg);
+}

@@ -1,0 +1,87 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "pt-sans",sans-serif;
+    
+}
+.mycontainer{
+    width: 100%;
+    margin: auto;
+    
+}
+.course_page{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 70px;
+  
+}
+.courses{
+    width: 60%;  
+    display: flex;
+    justify-content: space-evenly;
+    align-items:center;
+    flex-wrap: wrap;
+    row-gap: 50px;
+    margin-left: 120px;
+
+}
+.hours{
+   
+    width: 25%;
+    align-self: self-start;
+}
+.course_item{
+    border: 5px solid #ddd;
+    width: 300px;
+    border-radius: 10px;
+    height: 200px;
+}
+.course_item div{
+   margin: 30px 10px;
+   
+}
+.course_item h4{
+    display: inline;
+   
+}
+.course_item h6{
+    display: inline;
+}
+.course_item button{
+   margin: 0px 10px;
+   width: 100px;
+   height: 30px;
+   border-radius: 10px;
+}
+.houre_item{
+    width: 200px;
+    margin: 50px 0px;
+ 
+}
+
+.houre_item div{
+    width: 130px;
+    height: 65px;
+    border: 2px solid #ddd;
+    border-radius: 65px 65px 0 0;
+    text-align: center;
+    padding: 4px;
+    margin: auto;
+
+}
+.houre_item progress{
+    margin: 20px 0px;
+    width: 200px;
+    
+}
+.hours button{
+    margin: 0px 50px;
+    width: 100px;
+    height: 30px; 
+    border-radius: 10px;
+}

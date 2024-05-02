@@ -12,6 +12,11 @@ import { AddCourseComponent } from './instructor/add-course/add-course.component
 import { InstructorCoursesComponent } from './instructor/instructor-courses/instructor-courses.component';
 import { StudentsProgressComponent } from './instructor/students-progress/students-progress.component';
 import { UploadGradesComponent } from './instructor/upload-grades/upload-grades.component';
+import { CourseRegisterationComponent } from './Student/course-registeration/course-registeration.component';
+import { CoursesComponent } from './Student/courses/courses.component';
+import { GradesComponent } from './Student/grades/grades.component';
+import { CourseDetailsComponent } from './Student/course-details/course-details.component';
+import { HeaderComponent } from './Student/header/header.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +26,12 @@ import { UploadGradesComponent } from './instructor/upload-grades/upload-grades.
     AddCourseComponent,
     InstructorCoursesComponent,
     StudentsProgressComponent,
-    UploadGradesComponent
+    UploadGradesComponent,
+    CourseRegisterationComponent,
+    CoursesComponent,
+    GradesComponent,
+    CourseDetailsComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
