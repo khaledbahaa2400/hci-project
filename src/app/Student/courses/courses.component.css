@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "pt-sans",sans-serif;
+    
+}
+.mycontainer{
+    width: 100%;
+    margin: auto;
+    
+}
+.mycourse_page{
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 70px;
+  
+}
+.mycourses{
+    width: 90%;  
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    row-gap: 50px;
+    margin-left: 120px;
+}
+.mycourses_item{
+    border: 5px solid #ddd;
+    width: 300px;
+    border-radius: 10px;
+    height: 150px;
+}
+.mycourses_item div{
+    margin: 30px 10px;
+    
+ }
+.mycourses_item h4{
+     display: inline;
+    
+ }
+.mycourses_item progress{
+    margin: 10px 10px;
+    width: 250px;
+    
+ }
