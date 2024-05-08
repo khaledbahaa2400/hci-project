@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 import { CoursesService } from '../../services/courses-service/courses.service';
 import { Course } from '../../models/Course';
@@ -9,14 +10,18 @@ import { Course } from '../../models/Course';
   styleUrl: './add-course.component.css'
 })
 export class AddCourseComponent {
-  constructor(private coursesService: CoursesService) { }
-
+  reactiveFormGroup: FormGroup;
   year: number = 1;
-  name: string = "";
-  hours: number = 3;
-  capacity: number = 100;
+
+  constructor(private coursesService: CoursesService) {
+    this.reactiveFormGroup = new FormGroup({
+      name: new FormControl("", Validators.required),
+      hours: new FormControl(3, [Validators.required, Validators.min(1)]),
+      capacity: new FormControl(100, [Validators.required, Validators.min(100)])
+    })
+  }
 
   addCourse() {
-    this.coursesService.addCourse(new Course(this.name, "Khaled", this.hours, this.capacity, this.year));
+    this.coursesService.addCourse(new Course(this.reactiveFormGroup.value.name, "Khaled", this.reactiveFormGroup.value.hours, this.reactiveFormGroup.value.capacity, this.year));
   }
 }

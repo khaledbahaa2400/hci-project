@@ -14,30 +14,30 @@
             </select>
         </div>
 
-        <form class="form">
+        <form class="form" [formGroup]="reactiveFormGroup" (ngSubmit)="addCourse()">
             <div class="form-group">
                 <label for="name">Course Name</label>
-                <input type="text" id="name" name="name" [(ngModel)]="name">
+                <input type="text" formGroupName="name">
             </div>
 
             <div class="row">
                 <div class="column">
                     <div class="form-group">
                         <label for="grade">Course Hours</label>
-                        <input type="number" min="1" id="hours" name="hours" [(ngModel)]="hours">
+                        <input type="number" min="1" formGroupName="hours">
                     </div>
                 </div>
 
                 <div class="row">
                     <div class="form-group">
                         <label for="capacity">Course Capacity</label>
-                        <input type="number" min="100" id="capacity" name="capacity" [(ngModel)]="capacity">
+                        <input type="number" min="100" formGroupName="capacity">
                     </div>
                 </div>
             </div>
 
             <div class="button-container">
-                <button type="submit" (click)="addCourse()">Add</button>
+                <button type="submit" [disabled]="!reactiveFormGroup.valid">Add</button>
             </div>
         </form>
     </div>
