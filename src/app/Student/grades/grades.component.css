@@ -1,0 +1,60 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+body {
+    font-family: "pt-sans",sans-serif;
+    
+}
+.mycontainer{
+    width: 100%;
+    margin: auto;
+    
+}
+.grade_page{
+    width: 80%;
+    margin: auto;
+}
+.grade_etails{
+    margin: 50px 120px;
+}
+.grade_etails div{
+    margin: 20px;
+
+}
+.grade_etails select{
+    display: block;
+    margin: 20px;
+    width: 200px;
+}
+.grade{
+    width: 80%;  
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    flex-wrap: wrap;
+    row-gap: 50px;
+    margin-left: 120px;
+}
+.grade_item{
+    border: 5px solid #ddd;
+    width: 300px;
+    border-radius: 10px;
+    height: 150px;
+    text-align: center;
+    padding-top: 20px;
+   
+}
+.grade_item div{
+    margin: 20px 10px;
+    
+ }
+.grade_item h4{
+     display: inline;
+    
+ }
+
+.grade_item h6{
+    display: inline;
+}
