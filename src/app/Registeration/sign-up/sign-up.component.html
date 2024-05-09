@@ -1,0 +1,23 @@
+<app-reg-header></app-reg-header>
+
+<section class="home">
+    <div class="mycontainer">
+        <div class="section_form">
+            <h2>Register</h2>
+            <form [formGroup]="reactiveFormGroup" (ngSubmit)="register()">
+                <input type="text" placeholder="Enter Username" formControlName="username">
+                <input type="email" placeholder="Enter Email" formControlName="email">
+                <input type="password" placeholder="Enter Password" formControlName="password">
+                <input type="password" placeholder="Confirm Password" formControlName="confirmPassword">
+                <select formControlName="role">
+                    <option value="instructor">Instructor</option>
+                    <option value="student">Student</option>
+                    <option value="admin">Admin</option>
+                </select>
+                <input type="submit" value="Sign Up" [disabled]="!reactiveFormGroup.valid">
+
+                Have An Account <a routerLink="/login">Login</a>
+            </form>
+        </div><!-- close section_form -->
+    </div><!-- close mycontainer -->
+</section><!-- close home -->

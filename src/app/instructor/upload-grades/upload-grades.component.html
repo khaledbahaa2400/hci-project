@@ -1,0 +1,59 @@
+<div class="body">
+    <div class="container">
+        <h1 class="title">Upload Grades</h1>
+
+        <form class="form" [formGroup]="reactiveFormGroup" (ngSubmit)="uploadGrade()">
+            <div class="form-group">
+                <label for="year">Year</label>
+                <select formControlName="year" (change)="changeYear()">
+                    <option [ngValue]="1">1</option>
+                    <option [ngValue]="2">2</option>
+                    <option [ngValue]="3">3</option>
+                    <option [ngValue]="4">4</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="name">Assessment</label>
+                <select formControlName="name">
+                    <option *ngFor="let assess of assessments" [value]="assess.name">{{ assess.name }}</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="upload-type">Upload Type</label>
+                <select formControlName="uploadType">
+                    <option value="individual">Individual</option>
+                    <option value="file">Upload File</option>
+                </select>
+            </div>
+
+            <div class="row"
+                [ngStyle]="{ display: reactiveFormGroup.value.uploadType === 'individual' ? 'grid' : 'none' }">
+                <div class="left-column">
+                    <div class="form-group">
+                        <label for="ID">Student ID</label>
+                        <input type="text" formControlName="studentID">
+                    </div>
+                </div>
+
+                <div class="right-column">
+                    <div class="form-group">
+                        <label for="grade">Grade</label>
+                        <input type="number" min="0" formControlName="studentGrade">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group"
+                [ngStyle]="{ display: reactiveFormGroup.value.uploadType !== 'individual' ? 'block' : 'none' }">
+                <label for="file">File</label>
+                <input type="file" id="file" name="file">
+            </div>
+
+            <div class="button-container">
+                <button type="submit" [disabled]="!reactiveFormGroup.valid">Submit</button>
+            </div>
+        </form>
+    </div>
+</div>
