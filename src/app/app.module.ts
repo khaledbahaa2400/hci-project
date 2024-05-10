@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Route, RouterModule, Routes } from '@angular/router';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AdminDashboaredComponent } from './admin/admin-dashboared/admin-dashboared.component';
@@ -31,6 +31,19 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AdminComponent } from './admin/admin/admin.component';
+
+
+const routes: Routes = [
+  {path: 'Users', component:UsersComponent},
+  {path: 'Courses', component:CourseManagementComponent},
+  {path: 'Assigncourses', component:AssignStudentToCourseComponent},
+  {path: 'Logout', component:LogInComponent},
+  {path: 'Courseregisteration', component:CourseRegisterationComponent},
+  {path: 'Grades', component:GradesComponent}
+
+
+]
+
 
 @NgModule({
   declarations: [
@@ -65,6 +78,7 @@ import { AdminComponent } from './admin/admin/admin.component';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
+    RouterModule.forRoot(routes),
     provideFirebaseApp(() => initializeApp({ "projectId": "hci-project-8147a", "appId": "1:1010784811225:web:f17d9b998c6c0e2962e6c8", "storageBucket": "hci-project-8147a.appspot.com", "apiKey": "AIzaSyAuVyNl2S7IMfe0D_PpkLhuEI94_AUv59Y", "authDomain": "hci-project-8147a.firebaseapp.com", "messagingSenderId": "1010784811225" })),
     provideFirestore(() => getFirestore()),
   ],
