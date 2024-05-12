@@ -5,7 +5,7 @@
         <form class="form" [formGroup]="reactiveFormGroup" (ngSubmit)="uploadGrade()">
             <div class="form-group">
                 <label for="year">Year</label>
-                <select formControlName="year" (change)="changeYear()">
+                <select formControlName="year" (change)="filterAssessmentsByYear()">
                     <option [ngValue]="1">1</option>
                     <option [ngValue]="2">2</option>
                     <option [ngValue]="3">3</option>
@@ -16,13 +16,19 @@
             <div class="form-group">
                 <label for="name">Assessment</label>
                 <select formControlName="name">
-                    <option *ngFor="let assess of assessments" [value]="assess.name">{{ assess.name }}</option>
+                    <option *ngFor="let assess of yearAssessments" [value]="assess.name">{{ assess.name }}</option>
                 </select>
+
+                <div *ngIf="reactiveFormGroup?.get('name')?.invalid" class="error">
+                    <span *ngIf="reactiveFormGroup?.get('name')?.errors?.['required']">
+                        Assessment is required.
+                    </span>
+                </div>
             </div>
 
             <div class="form-group">
                 <label for="upload-type">Upload Type</label>
-                <select formControlName="uploadType">
+                <select formControlName="uploadType" (change)="changeUploadType()">
                     <option value="individual">Individual</option>
                     <option value="file">Upload File</option>
                 </select>
@@ -34,6 +40,12 @@
                     <div class="form-group">
                         <label for="ID">Student ID</label>
                         <input type="text" formControlName="studentID">
+
+                        <div *ngIf="reactiveFormGroup?.get('studentID')?.invalid" class="error">
+                            <span *ngIf="reactiveFormGroup?.get('studentID')?.errors?.['required']">
+                                Student ID is required.
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -41,6 +53,15 @@
                     <div class="form-group">
                         <label for="grade">Grade</label>
                         <input type="number" min="0" formControlName="studentGrade">
+
+                        <div *ngIf="reactiveFormGroup?.get('studentGrade')?.invalid" class="error">
+                            <span *ngIf="reactiveFormGroup?.get('studentGrade')?.errors?.['required']">
+                                Grade is required.
+                            </span>
+                            <span *ngIf="reactiveFormGroup?.get('studentGrade')?.errors?.['min']">
+                                Grade shouldn't be negative number.
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -48,7 +69,13 @@
             <div class="form-group"
                 [ngStyle]="{ display: reactiveFormGroup.value.uploadType !== 'individual' ? 'block' : 'none' }">
                 <label for="file">File</label>
-                <input type="file" id="file" name="file">
+                <input type="file" accept=".csv" (change)="onFileSelected($event)">
+
+                <div *ngIf="reactiveFormGroup?.get('file')?.invalid" class="error">
+                    <span *ngIf="reactiveFormGroup?.get('file')?.errors?.['required']">
+                        File is required.
+                    </span>
+                </div>
             </div>
 
             <div class="button-container">

@@ -5,6 +5,7 @@ import { User } from '../../models/User';
 import { Firestore, collection } from '@angular/fire/firestore';
 import { addDoc, doc, getDocs, query, where } from 'firebase/firestore';
 import { isPlatformBrowser } from '@angular/common';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,7 @@ export class AuthService {
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
 
-  constructor(private fireStore: Firestore, @Inject(PLATFORM_ID) private platformId: any) {
+  constructor(private fireStore: Firestore, @Inject(PLATFORM_ID) private platformId: any, private toastr: ToastrService) {
     this.isUserAuthenticated = false;
     this.currentUserSubject = new BehaviorSubject<User | null>(null);
     this.currentUser = this.currentUserSubject.asObservable();
@@ -117,5 +118,21 @@ export class AuthService {
   // Method to return the current user type
   getCurrentUser(): User | null {
     return this.currentUserSubject.value;
+  }
+
+  showSuccess(message: string) {
+    this.toastr.success(message, 'Success', {
+      timeOut: 3000, // toast timeout in milliseconds (default is 3000)
+      progressBar: true, // show progress bar
+      positionClass: 'toast-top-right' // toast position
+    });
+  }
+
+  showError(message: string) {
+    this.toastr.error(message, 'Error', {
+      timeOut: 3000, // toast timeout in milliseconds (default is 3000)
+      progressBar: true, // show progress bar
+      positionClass: 'toast-top-right' // toast position
+    });
   }
 }

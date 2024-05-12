@@ -1,28 +1,47 @@
 import { Injectable } from '@angular/core';
 import { Course } from '../../models/Course';
+import { Observable } from 'rxjs';
+import { Firestore, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CoursesService {
-  courses: Course[] = [
-    new Course('HCI', 'Khaled', 3, 500, 4),
-    new Course('social', 'Khaled', 3, 500, 4),
-    new Course('SQA', 'Hamdy', 3, 500, 4),
-    new Course('MM', 'Jana', 3, 500, 3),
-    new Course('database', 'Nada', 3, 500, 2),
-    new Course('intro', 'Khaled', 3, 500, 1),
-  ];
+  constructor(private firestore: Firestore, private toastr: ToastrService) { }
+
+  getCourses(): Observable<Course[]> {
+    const courses = collectionData(collection(this.firestore, 'courses'), { idField: 'id' })
+    return courses as Observable<Course[]>;
+  }
 
   addCourse(course: Course) {
-    this.courses.push(course);
+    addDoc(collection(this.firestore, 'courses'), { ...course });
   }
 
-  filterCoursesByYear(year: number, instructor: string): Course[] {
-    return this.courses.filter(course => course.year === year && course.instructor === instructor);
+  updateCourse(course: Course) {
+    const ref = doc(this.firestore, 'courses', course.id);
+    updateDoc(ref, { ...course });
   }
 
-  filterCoursesByInstructor(instructor: string): Course[] {
-    return this.courses.filter(course => course.instructor === instructor);
+  addMaterial(course: Course) {
+    const ref = doc(this.firestore, 'courses', course.id);
+    updateDoc(ref, { ...course });
+  }
+
+  showSuccess(message: string) {
+    this.toastr.success(message, 'Success', {
+      timeOut: 3000, // toast timeout in milliseconds (default is 3000)
+      progressBar: true, // show progress bar
+      positionClass: 'toast-top-right' // toast position
+    });
+  }
+
+  showError(message: string) {
+    this.toastr.error(message, 'Error', {
+      timeOut: 3000, // toast timeout in milliseconds (default is 3000)
+      progressBar: true, // show progress bar
+      positionClass: 'toast-top-right' // toast position
+    });
   }
 }

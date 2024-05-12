@@ -16,6 +16,12 @@
             <div class="form-group">
                 <label for="name">Course Name</label>
                 <input type="text" formControlName="name">
+
+                <div *ngIf="reactiveFormGroup?.get('name')?.invalid" class="error">
+                    <span *ngIf="reactiveFormGroup?.get('name')?.errors?.['required']">
+                        Course Name is required.
+                    </span>
+                </div>
             </div>
 
             <div class="row">
@@ -23,6 +29,15 @@
                     <div class="form-group">
                         <label for="grade">Course Hours</label>
                         <input type="number" min="1" formControlName="hours">
+
+                        <div *ngIf="reactiveFormGroup?.get('hours')?.invalid" class="error">
+                            <span *ngIf="reactiveFormGroup?.get('hours')?.errors?.['required']">
+                                Course Hours is required.
+                            </span>
+                            <span *ngIf="reactiveFormGroup?.get('hours')?.errors?.['min']">
+                                Course Hours should be greater than 0.
+                            </span>
+                        </div>
                     </div>
                 </div>
 
@@ -30,6 +45,15 @@
                     <div class="form-group">
                         <label for="capacity">Course Capacity</label>
                         <input type="number" min="100" formControlName="capacity">
+
+                        <div *ngIf="reactiveFormGroup?.get('capacity')?.invalid" class="error">
+                            <span *ngIf="reactiveFormGroup?.get('capacity')?.errors?.['required']">
+                                Course Capacity is required.
+                            </span>
+                            <span *ngIf="reactiveFormGroup?.get('capacity')?.errors?.['min']">
+                                Course Capacity should be greater than of equal 100.
+                            </span>
+                        </div>
                     </div>
                 </div>
             </div>
