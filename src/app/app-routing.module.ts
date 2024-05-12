@@ -18,6 +18,9 @@ import { AuthGuard } from './guards/auth-guard/auth.guard';
 import { AdminComponent } from './admin/admin/admin.component';
 import { AdminDashboaredComponent } from './admin/admin-dashboared/admin-dashboared.component';
 import { UploadMaterialsComponent } from './instructor/upload-materials/upload-materials.component';
+import { UsersComponent } from './admin/users/users.component';
+import { CourseManagementComponent } from './admin/course-management/course-management.component';
+import { AssignStudentToCourseComponent } from './admin/assign-student-to-course/assign-student-to-course.component';
 
 const routes: Routes = [
   { path: 'login', component: LogInComponent, canActivate: [AuthGuard] },
@@ -60,6 +63,12 @@ const routes: Routes = [
     data: { role: 'admin' },
     children: [
       { path: '', component: AdminDashboaredComponent },
+      { path: 'Users', component: UsersComponent },
+      { path: 'Courses', component: CourseManagementComponent },
+      { path: 'Assigncourses', component: AssignStudentToCourseComponent },
+      { path: 'Logout', component: LogInComponent },
+      { path: 'Courseregisteration', component: CourseRegisterationComponent },
+      { path: 'Grades', component: GradesComponent }
     ]
   },
 
