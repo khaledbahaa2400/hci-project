@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Course } from '../../models/Course';
-import { Observable } from 'rxjs';
 import { Firestore, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
+import { Observable } from 'rxjs';
+
+import { Course } from '../../models/Course';
+import { CourseRegistration } from '../../models/CourseRegistration';
 
 @Injectable({
   providedIn: 'root'
@@ -43,5 +45,24 @@ export class CoursesService {
       progressBar: true, // show progress bar
       positionClass: 'toast-top-right' // toast position
     });
+  }
+
+  getcoursesReg(): Observable<CourseRegistration[]> {
+    const CourseRegistrationCollection = collection(this.firestore, 'course-registration')
+    const CoursesReg = collectionData(CourseRegistrationCollection, { idField: 'id' }) as Observable<CourseRegistration[]>;
+    return CoursesReg;
+  }
+
+  updatedatabase(course: CourseRegistration, s: any) {
+
+    const CourseRegistrationCollection = collection(this.firestore, 'course-registration')
+
+    if (s === "add") {
+
+      addDoc(CourseRegistrationCollection, { ...course });
+    } else {
+      const document = doc(CourseRegistrationCollection, course.id);
+      updateDoc(document, { ...course });
+    }
   }
 }

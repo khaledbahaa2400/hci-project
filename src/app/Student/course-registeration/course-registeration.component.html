@@ -1,95 +1,20 @@
 <section>
     <div class="mycontainer">
         <div class="course_page">
-            <div class="courses">
-                <div class="course_item">
+            <div class="courses" >
+                <div class="course_item" *ngFor="let course of CoursesReg" >
                     <div>
                         <h4>Course:</h4>
-                        <span>OPP</span>
+                        <span>{{course.course_name}}</span>
                     </div>
                     <div>
                         <h6>Credit hours:</h6>
-                        <span>4</span>
+                        <span>{{course.hours}}</span>
                     </div>
-                    <button>Selecte</button>
+                    <button (click)="toggleSelection(course)">
+                      {{ course.isSelected ?  'UnSelecte' : 'Selecte' }}</button>
                 </div><!-- close course_item -->
-                <div class="course_item">
-                    <div>
-                        <h4>Course:</h4>
-                        <span>OPP</span>
-                    </div>
-                    <div>
-                        <h6>Credit hours:</h6>
-                        <span>4</span>
-                    </div>
-                    <button>Selecte</button>
-                </div><!-- close course_item -->
-                <div class="course_item">
-                    <div>
-                        <h4>Course:</h4>
-                        <span>OPP</span>
-                    </div>
-                    <div>
-                        <h6>Credit hours:</h6>
-                        <span>4</span>
-                    </div>
-                    <button>Selecte</button>
-                </div><!-- close course_item -->
-                <div class="course_item">
-                    <div>
-                        <h4>Course:</h4>
-                        <span>OPP</span>
-                    </div>
-                    <div>
-                        <h6>Credit hours:</h6>
-                        <span>4</span>
-                    </div>
-                    <button>Selecte</button>
-                </div><!-- close course_item -->
-                <div class="course_item">
-                    <div>
-                        <h4>Course:</h4>
-                        <span>OPP</span>
-                    </div>
-                    <div>
-                        <h6>Credit hours:</h6>
-                        <span>4</span>
-                    </div>
-                    <button>Selecte</button>
-                </div><!-- close course_item -->
-                <div class="course_item">
-                    <div>
-                        <h4>Course:</h4>
-                        <span>OPP</span>
-                    </div>
-                    <div>
-                        <h6>Credit hours:</h6>
-                        <span>4</span>
-                    </div>
-                    <button>Selecte</button>
-                </div><!-- close course_item -->
-                <div class="course_item">
-                    <div>
-                        <h4>Course:</h4>
-                        <span>OPP</span>
-                    </div>
-                    <div>
-                        <h6>Credit hours:</h6>
-                        <span>4</span>
-                    </div>
-                    <button>Selecte</button>
-                </div><!-- close course_item -->
-                <div class="course_item">
-                    <div>
-                        <h4>Course:</h4>
-                        <span>OPP</span>
-                    </div>
-                    <div>
-                        <h6>Credit hours:</h6>
-                        <span>4</span>
-                    </div>
-                    <button>Selecte</button>
-                </div><!-- close course_item -->
+                
             </div><!-- close courses -->
             <div class="hours">
                 <div class="houre_item">
@@ -116,7 +41,7 @@
                     </div>
                     <progress value="50" max="100"></progress>
                 </div><!-- close houre_item -->
-                <button>Submit</button>
+                <button (click)="saveChanges()">Save</button>
             </div><!-- close hours -->
         </div><!-- close course_page -->
     </div><!-- close mycontainer -->

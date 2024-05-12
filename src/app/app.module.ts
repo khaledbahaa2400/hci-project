@@ -37,6 +37,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AdminComponent } from './admin/admin/admin.component';
 import { environment } from '../environments/environment.development';
 
+
 @NgModule({
   declarations: [
     AppComponent,
