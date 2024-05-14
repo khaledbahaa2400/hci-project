@@ -39,7 +39,9 @@ const routes: Routes = [
   {path: 'Assigncourses', component:AssignStudentToCourseComponent},
   {path: 'Logout', component:LogInComponent},
   {path: 'Courseregisteration', component:CourseRegisterationComponent},
-  {path: 'Grades', component:GradesComponent}
+  {path: 'Grades', component:GradesComponent},
+  {path: 'Admin-dashboard', component:AdminDashboaredComponent}
+  
 
 
 ]

@@ -33,28 +33,29 @@
     <div class="mycontainer">
         <div class="course_page">
             <div class="courses">
-                <div class="course_item">
+                <div class="course_item" *ngFor="let t of users; let i=index;">
                     <div>
                         <h4>Users</h4>
                         
                     </div>
                     <div>
                         
-                        <span>22</span>
+                        <span>{{i+1}}</span>
                     </div>
-                    <button>Show</button>
+                    <button routerLink="/Courses">Show</button>
                 </div><!-- close course_item -->
-                <div class="course_item">
+                <div class="course_item" *ngFor="let t of Courses; let i=index;">
                     <div>
                         <h4>Courses</h4>
                         
                     </div>
                     <div>
                         
-                        <span>40</span>
+                        <span>{{i+1}}</span>
                     </div>
-                    <button>Show</button>
+                    <button routerLink="/Users">Show</button>
                 </div><!-- close course_item -->
+                
                 <div class="course_item">
                     <div>
                         <h4>Assign courses</h4>
@@ -62,9 +63,9 @@
                     </div>
                     <div>
                         
-                        <span>200</span>
+                        
                     </div>
-                    <button>Show</button>
+                    <button routerLink="/Assigncourses">Show</button>
                 </div><!-- close course_item -->
                 
             </div><!-- close courses -->
