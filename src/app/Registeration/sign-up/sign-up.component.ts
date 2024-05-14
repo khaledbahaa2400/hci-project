@@ -26,7 +26,7 @@ export class SignUpComponent {
     if (user) {
       // Return user already exist
     } else {
-      const newUser = new User("", this.reactiveFormGroup.value.username, this.reactiveFormGroup.value.email, this.reactiveFormGroup.value.password, this.reactiveFormGroup.value.role, -1, false);
+      const newUser = new User("", this.reactiveFormGroup.value.username, this.reactiveFormGroup.value.email, this.reactiveFormGroup.value.password, this.reactiveFormGroup.value.role, -1, false, []);
       this.authService.register(newUser)
       this.reactiveFormGroup.reset();
       this.reactiveFormGroup.get('role')?.setValue("instructor");

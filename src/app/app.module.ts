@@ -1,8 +1,12 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { Route, RouterModule, Routes } from '@angular/router';
+import { RouterModule } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
+import { AngularFireModule } from '@angular/fire/compat'
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 
 import { AdminDashboaredComponent } from './admin/admin-dashboared/admin-dashboared.component';
 import { AssignStudentToCourseComponent } from './admin/assign-student-to-course/assign-student-to-course.component';
@@ -12,10 +16,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { InstructorHeaderComponent } from './instructor/shared/instructor-header/instructor-header.component';
-import { AddAssessmentComponent } from './instructor/add-assessment/add-assessment.component';
 import { AddCourseComponent } from './instructor/add-course/add-course.component';
 import { InstructorCoursesComponent } from './instructor/instructor-courses/instructor-courses.component';
 import { StudentsProgressComponent } from './instructor/students-progress/students-progress.component';
+import { UploadMaterialsComponent } from './instructor/upload-materials/upload-materials.component';
 import { UploadGradesComponent } from './instructor/upload-grades/upload-grades.component';
 import { CourseRegisterationComponent } from './Student/course-registeration/course-registeration.component';
 import { CoursesComponent } from './Student/courses/courses.component';
@@ -33,6 +37,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AdminComponent } from './admin/admin/admin.component';
 
 
+
 const routes: Routes = [
   {path: 'Users', component:UsersComponent},
   {path: 'Courses', component:CourseManagementComponent},
@@ -46,6 +51,8 @@ const routes: Routes = [
 
 ]
 
+import { environment } from '../environments/environment.development';
+
 
 @NgModule({
   declarations: [
@@ -54,11 +61,11 @@ const routes: Routes = [
     AssignStudentToCourseComponent,
     CourseManagementComponent,
     UsersComponent,
-    AddAssessmentComponent,
     InstructorHeaderComponent,
     AddCourseComponent,
     InstructorCoursesComponent,
     StudentsProgressComponent,
+    UploadMaterialsComponent,
     UploadGradesComponent,
     CourseRegisterationComponent,
     CoursesComponent,
@@ -80,9 +87,12 @@ const routes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     provideFirebaseApp(() => initializeApp({ "projectId": "hci-project-8147a", "appId": "1:1010784811225:web:f17d9b998c6c0e2962e6c8", "storageBucket": "hci-project-8147a.appspot.com", "apiKey": "AIzaSyAuVyNl2S7IMfe0D_PpkLhuEI94_AUv59Y", "authDomain": "hci-project-8147a.firebaseapp.com", "messagingSenderId": "1010784811225" })),
     provideFirestore(() => getFirestore()),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireStorageModule
   ],
   providers: [
     provideClientHydration()

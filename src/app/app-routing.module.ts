@@ -8,7 +8,6 @@ import { GradesComponent } from './Student/grades/grades.component';
 import { LogInComponent } from './Registeration/log-in/log-in.component';
 import { SignUpComponent } from './Registeration/sign-up/sign-up.component';
 import { InstructorComponent } from './instructor/instructor/instructor.component';
-import { AddAssessmentComponent } from './instructor/add-assessment/add-assessment.component';
 import { AddCourseComponent } from './instructor/add-course/add-course.component';
 import { InstructorCoursesComponent } from './instructor/instructor-courses/instructor-courses.component';
 import { StudentsProgressComponent } from './instructor/students-progress/students-progress.component';
@@ -18,6 +17,10 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { AuthGuard } from './guards/auth-guard/auth.guard';
 import { AdminComponent } from './admin/admin/admin.component';
 import { AdminDashboaredComponent } from './admin/admin-dashboared/admin-dashboared.component';
+import { UploadMaterialsComponent } from './instructor/upload-materials/upload-materials.component';
+import { UsersComponent } from './admin/users/users.component';
+import { CourseManagementComponent } from './admin/course-management/course-management.component';
+import { AssignStudentToCourseComponent } from './admin/assign-student-to-course/assign-student-to-course.component';
 
 const routes: Routes = [
   { path: 'login', component: LogInComponent, canActivate: [AuthGuard] },
@@ -30,13 +33,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     data: { role: 'instructor' },
     children: [
-      { path: '', component: AddAssessmentComponent },
-      { path: 'add-assessment', component: AddAssessmentComponent },
+      { path: '', component: InstructorCoursesComponent },
       { path: 'add-course', component: AddCourseComponent },
       { path: 'courses', component: InstructorCoursesComponent },
       { path: 'students-progress', component: StudentsProgressComponent },
       { path: 'upload-grades', component: UploadGradesComponent },
-      { path: 'upload-materials', component: UploadGradesComponent },
+      { path: 'upload-materials', component: UploadMaterialsComponent },
     ]
   },
 
@@ -61,6 +63,12 @@ const routes: Routes = [
     data: { role: 'admin' },
     children: [
       { path: '', component: AdminDashboaredComponent },
+      { path: 'Users', component: UsersComponent },
+      { path: 'Courses', component: CourseManagementComponent },
+      { path: 'Assigncourses', component: AssignStudentToCourseComponent },
+      { path: 'Logout', component: LogInComponent },
+      { path: 'Courseregisteration', component: CourseRegisterationComponent },
+      { path: 'Grades', component: GradesComponent }
     ]
   },
 

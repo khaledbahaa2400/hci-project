@@ -1,19 +1,19 @@
-import { Course } from "./Course";
-
 export class Assessment {
-    year: number;
+    id: string
     name: string;
-    course: Course
-    mode: string;
-    type: string;
-    date: string;
+    course: string;
+    instructor: string
+    year: number;
+    week: number;
+    grades: { [key: string]: number };
 
-    constructor(year: number, name: string, course: Course, mode: string, type: string, date: string) {
-        this.year = year;
+    constructor(id: string, name: string, course: string, instructor: string, year: number, week: number, grades: { [key: string]: number }) {
+        this.id = id;
         this.name = name;
         this.course = course;
-        this.mode = mode;
-        this.type = type;
-        this.date = date;
+        this.instructor = instructor;
+        this.year = year;
+        this.week = week;
+        this.grades = grades;
     }
 }

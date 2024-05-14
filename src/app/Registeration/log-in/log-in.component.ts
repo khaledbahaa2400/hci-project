@@ -31,7 +31,7 @@ export class LogInComponent {
         const isActivated = user['isActivated'];
         if (isActivated) {
           const year = user['year'] ?? -1;
-          const currentUser = new User(user['id'], user['username'], user['email'], user['password'], user['role'], year, user['isActivated']);
+          const currentUser = new User(user['id'], user['username'], user['email'], user['password'], user['role'], year, user['isActivated'], []);
           this.authService.setCurrentUser(currentUser)
 
           const role = user['role']

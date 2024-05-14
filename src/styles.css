@@ -6146,3 +6146,10 @@ body {
     width: 100%;
     margin: auto;
 }
+
+.error {
+    display: block;
+    font-size: small;
+    color: #dc3545;
+    margin-top: 15px;
+}

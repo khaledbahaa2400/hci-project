@@ -2,7 +2,7 @@
     <div class="container">
         <div class="dropdown-container">
             <label for="course">Course</label>
-            <select id="course" [(ngModel)]="course" (change)="filterProgressByCourse()">
+            <select id="course" [(ngModel)]="courseName" (change)="calculateStudentsProgress()">
                 <option *ngFor="let course of instructorCourses" [value]="course.name">{{ course.name }}</option>
             </select>
         </div>

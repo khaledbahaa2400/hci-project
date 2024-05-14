@@ -7,7 +7,6 @@
                 <ul>
                     <li><a routerLink="courses" class="link">Your Courses</a> </li>
                     <li><a routerLink="add-course" class="link">Add Course</a> </li>
-                    <li><a routerLink="add-assessment" class="link">Add Assessment</a></li>
                     <li><a routerLink="upload-grades" class="link">Upload Grades</a></li>
                     <li><a routerLink="upload-materials" class="link">Upload Materials</a></li>
                     <li><a routerLink="students-progress" class="link">Students Progress</a></li>
@@ -15,7 +14,7 @@
             </nav> <!-- close nav -->
             <div class="profile">
                 <ul>
-                    <li><a href="Login.html" class="link">Log Out</a></li>
+                    <li><a (click)="logout()" class="link">Log Out</a></li>
                 </ul>
             </div> <!-- close profile -->
         </div> <!-- close header-content -->

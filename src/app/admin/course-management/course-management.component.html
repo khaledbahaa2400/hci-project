@@ -1,32 +1,35 @@
 <style>
-    .courses{
+    .courses {
         width: 80%;
         
     }
     
 
-    .course_item{
+    .course_item {
         width: 320px;
         height: 280px;
     }
-    form select{
+
+    form select {
         justify-content: center;
 
-margin: 15px 300px;
-width: 50%;
-border: 1px solid #ddd;
-height: 30px;
-padding: 5px;
-outline: none;
-}
-form h2{
-margin-top: 10px;
-text-align: center;
-}
-hr{
-margin-top: 10px;
-margin-bottom: 10px;
-}
+        margin: 15px 300px;
+        width: 50%;
+        border: 1px solid #ddd;
+        height: 30px;
+        padding: 5px;
+        outline: none;
+    }
+
+    form h2 {
+        margin-top: 10px;
+        text-align: center;
+    }
+
+    hr {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
 </style>
 
 
@@ -37,38 +40,39 @@ margin-bottom: 10px;
             <img src="images/logo.png" alt="logo">
             <nav>
                 <ul>
-                    <li><a routerLink="/Courses" class="link">Courses</a> </li>
-                    <li><a routerLink="/Courseregisteration" class="link">Course Registeration</a></li>
-                    <li><a routerLink="/Grades" class="link">Grades</a></li>
+                    <li><a routerLink="Courses" class="link">Courses</a> </li>
+                    <li><a routerLink="Courseregisteration" class="link">Course Registeration</a></li>
+                    <li><a routerLink="Grades" class="link">Grades</a></li>
                 </ul>
             </nav> <!-- close nav -->
             <div class="profile">
                 <ul>
                     <li>
-                        <a routerLink="/Logout" class="link"><i class="fas fa-user"></i></a>
+                        <a routerLink="Logout" class="link"><i class="fas fa-user"></i></a>
                         <div></div>
                     </li>
-                    <li><a routerLink="/Logout" class="link">Log Out</a></li>
+                    <li><a routerLink="Logout" class="link">Log Out</a></li>
                 </ul>
             </div> <!-- close profile -->
         </div> <!-- close header-content -->
     </div><!-- close mycontainer -->
 </header> <!-- close header -->
 
-        <form >
-            <h2>All courses</h2>
-            <select name="account_type" >
-                
-                <option value="Instructor">Year</option>
-                <option value="Student">1</option>
-                <option value="Student">2</option>
-                <option value="Student">3</option>
-                <option value="Student">4</option>
-            </select>
-        </form>
-    
+<form>
+    <h2>All courses</h2>
+    <select name="account_type">
+
+        <option value="Instructor">Year</option>
+        <option value="Student">1</option>
+        <option value="Student">2</option>
+        <option value="Student">3</option>
+        <option value="Student">4</option>
+    </select>
+</form>
+
 
 <section>
+
     <div *ngFor="let t of Courses; let i=index;">
         <div class="course_page" >
             <div class="courses" >
@@ -92,6 +96,7 @@ margin-bottom: 10px;
                 </div><!-- close course_item -->
                 
             
+
         </div><!-- close course_page -->
     </div><!-- close mycontainer -->
     </div>
