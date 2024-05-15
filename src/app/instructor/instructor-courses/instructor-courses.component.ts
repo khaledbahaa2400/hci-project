@@ -41,7 +41,7 @@ export class InstructorCoursesComponent {
 
   filterCoursesByYear(): void {
     const currentUser = this.authService.getCurrentUser();
-    this.yearCourses = this.courses.filter(course => course.year == this.year && course.instructor == currentUser?.username);
+    this.yearCourses = this.courses.filter(course => course.year == this.year && course.instructor == currentUser?.username && !course.isArchived);
   }
 
   editCourse(course: Course) {

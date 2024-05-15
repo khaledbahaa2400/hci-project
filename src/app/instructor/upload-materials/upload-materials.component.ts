@@ -42,7 +42,7 @@ export class UploadMaterialsComponent {
   }
 
   filterCoursesByYear(): void {
-    this.yearCourses = this.courses.filter(course => course.year == this.reactiveFormGroup.value.year);
+    this.yearCourses = this.courses.filter(course => course.year == this.reactiveFormGroup.value.year && !course.isArchived);
     this.reactiveFormGroup.get('course_name')?.setValue(this.yearCourses[0].name);
   }
 

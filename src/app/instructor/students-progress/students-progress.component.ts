@@ -34,7 +34,7 @@ export class StudentsProgressComponent {
 
   filterCoursesByInstructor(): void {
     const currentUser = this.authService.getCurrentUser();
-    this.instructorCourses = this.courses.filter(course => course.instructor == currentUser?.username);
+    this.instructorCourses = this.courses.filter(course => course.instructor == currentUser?.username && !course.isArchived);
     this.course = this.instructorCourses[0];
     this.courseName = this.instructorCourses[0].name;
   }

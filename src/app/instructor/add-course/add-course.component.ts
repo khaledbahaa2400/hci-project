@@ -30,7 +30,7 @@ export class AddCourseComponent {
       currentUser?.username ?? "",
       this.reactiveFormGroup.value.hours,
       this.reactiveFormGroup.value.capacity,
-      this.year, []));
+      this.year, false, []));
     this.coursesService.showSuccess("Course Added Successfully")
     this.reactiveFormGroup.reset({
       name: "",

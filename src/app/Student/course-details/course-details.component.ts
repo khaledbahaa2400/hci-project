@@ -33,12 +33,12 @@ export class CourseDetailsComponent {
   constructor(private coursesServices: CoursesService, private route: ActivatedRoute, private authService: AuthService, private storage: AngularFireStorage) {
     this.coureseSub = this.coursesServices.getCourses().subscribe((courses) => {
       this.Courses = courses;
-      this.currentCourse = this.getCourseByName(this.courseName) ?? new Course("", "", "", 0, 0, 0, []);
+      this.currentCourse = this.getCourseByName(this.courseName) ?? new Course("", "", "", 0, 0, 0, false, []);
       this.materials = this.currentCourse?.materials ?? [];
 
     })
     this.user = this.authService.getCurrentUser() ?? new User("", "", "", "", "", 4, true, []);
-    this.currentCourse = this.getCourseByName(this.courseName) ?? new Course("", "", "", 0, 0, 0, []);
+    this.currentCourse = this.getCourseByName(this.courseName) ?? new Course("", "", "", 0, 0, 0, false, []);
     for (let i = 0; i < 10; i++) {
       this.isCollapsed[i] = true;
     }

@@ -44,10 +44,10 @@ export class LogInComponent {
           else if (role === "student")
             this.router.navigate(['/student'])
         } else {
-          // Return deactivated account
+          this.authService.showError("User is Deactivated")
         }
       } else {
-        // Return invalid credentials
+        this.authService.showError("Invalid Credentials")
       }
     } catch (error) {
       console.error('Error:', error);
