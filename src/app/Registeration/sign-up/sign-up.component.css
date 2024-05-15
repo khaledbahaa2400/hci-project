@@ -28,14 +28,15 @@ body {
 .section_form h2 {
     font-size: 50px;
     letter-spacing: 2px;
-    color: #7b5244;
+    color: #2D9596;
 }
 
 .section_form form input {
     display: block;
     margin: 15px 0px;
     width: 100%;
-    border: 1px solid #ddd;
+    border-radius: 4px;
+    border: 1px solid #2D9596;
     height: 30px;
     padding: 5px;
     outline: none;
@@ -45,7 +46,8 @@ body {
     display: block;
     margin: 15px 0px;
     width: 100%;
-    border: 1px solid #ddd;
+    border-radius: 4px;
+    border: 1px solid #2D9596;
     height: 30px;
     padding: 5px;
     outline: none;
@@ -56,6 +58,6 @@ body {
 }
 
 .section_form form input[type="submit"]:disabled {
-    background-color: #cccccc;
-    color: #666666;
+    background-color: #2D9596;
+    color: white;
 }

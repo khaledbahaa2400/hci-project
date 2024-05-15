@@ -35,10 +35,11 @@ body {
     align-items:center;
     flex-wrap: wrap;
     row-gap: 50px;
+    column-gap: 100px;
     margin-left: 120px;
 }
 .grade_item{
-    border: 5px solid #ddd;
+    border: 5px solid #2D9596;
     width: 300px;
     border-radius: 10px;
     height: 150px;
