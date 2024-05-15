@@ -37,24 +37,24 @@ export class CourseRegisterationComponent {
 
   }
   copyCourses(email: string) {
-    // let x = false;
-    // this.Courses.forEach(element => {
-    //   x=this.CoursesReg.some((c)=>{
-    //     return element.name === c.course_name && email === c.student_email;
-    //   })
-    //   if (x === false) {
-    //     this.coursesServices.updateRegisterationRequests({
-    //       course_name: element.name,
-    //       student_email: email,
-    //       hours: element.hours,
-    //       year: element.year,
-    //       isSelected: false,
-    //       id: ""
-    //     }, "add")
-    //     console.log("course added")
-    //   }
-    //   x = false;
-    // }); 
+    let x = false;
+    this.Courses.forEach(element => {
+      x=this.CoursesReg.some((c)=>{
+        return element.name === c.course_name && email === c.student_email;
+      })
+      if (x === false) {
+        this.coursesServices.updateRegisterationRequests({
+          course_name: element.name,
+          student_email: email,
+          hours: element.hours,
+          year: element.year,
+          isSelected: false,
+          id: ""
+        }, "add")
+        console.log("course added")
+      }
+      x = false;
+    }); 
   }
   totalhours() {
     let total = 0;
