@@ -1,46 +1,37 @@
-
-
-
 <!--begin table-->
 <div class="container">
 
 
-<div class="table">
-<div class="table-header">
-    <div class="header__item"><a id="name" class="filter__link" href="#">First Name</a></div>
-    <div class="header__item"><a id="wins" class="filter__link" href="#">Email</a></div>
-    <div class="header__item"><a id="draws" class="filter__link " href="#">Role</a></div>
-    <div class="header__item"><a id="losses" class="filter__link " href="#">Status</a></div>
-    <div class="header__item"><a id="total" class="filter__link " href="#">Delete</a></div>
-</div>
-<div class="table-content" *ngFor="let t of Users; let i=index;">	
-    
-    
-    <div class="table-row" >
-        <div class="table-data">{{t.username}}</div>
-        <div class="table-data">{{t.email}}</div>
-        <div class="table-data">{{t.role}}</div>
-        <div class="table-data" *ngIf="t.isActivated === true">
-            <button class="btn1" > Active
-                
-            </button>
-        
+    <div class="table">
+        <div class="table-header">
+            <div class="header__item"><a id="name" class="filter__link" href="#">First Name</a></div>
+            <div class="header__item"><a id="wins" class="filter__link" href="#">Email</a></div>
+            <div class="header__item"><a id="draws" class="filter__link " href="#">Role</a></div>
+            <div class="header__item"><a id="losses" class="filter__link " href="#">Status</a></div>
+            <div class="header__item"><a id="total" class="filter__link " href="#">Delete</a></div>
         </div>
-        <div class="table-data" *ngIf="t.isActivated === false">
-            <button class="btn1" > Not Active
-                
-            </button>
-        
-        </div>
-        <div class="table-data"><button class="button2">
-            <svg viewBox="0 0 448 512" class="svgIcon"><path d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z"></path></svg>
-          </button></div>
-          
-    </div>
-    <hr>
-    
-    
-</div>	
-</div>
-</div>
+        <div class="table-content" *ngFor="let t of Users; let i=index;">
 
+
+            <div class="table-row">
+                <div class="table-data">{{t.username}}</div>
+                <div class="table-data">{{t.email}}</div>
+                <div class="table-data">{{t.role}}</div>
+                <div class="table-data" *ngIf="t.isActivated === true">
+                    <button class="btn1" (click)="toggleActivation(t)"> Active</button>
+                </div>
+                <div class="table-data" *ngIf="t.isActivated === false">
+                    <button class="btn1" (click)="toggleActivation(t)"> Not Active</button>
+                </div>
+                <div class="table-data"><button (click)="deleteUser(t)" class="button2">
+                        <svg viewBox="0 0 448 512" class="svgIcon">
+                            <path
+                                d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                            </path>
+                        </svg>
+                    </button></div>
+            </div>
+            <hr>
+        </div>
+    </div>
+</div>

@@ -35,6 +35,10 @@ body {
 
 }
 
+.logo {
+    text-decoration: none;
+}
+
 nav ul li {
     display: inline-block;
     list-style: none;

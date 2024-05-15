@@ -38,24 +38,9 @@ import { StudentComponent } from './Student/student/student.component';
 import { StudentHeaderComponent } from './Student/student-header/student-header.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { AdminComponent } from './admin/admin/admin.component';
-
-
-
-
-const routes: Routes = [
-  
-  {path: 'Users', component:UsersComponent},
-  {path: 'Courses', component:CourseManagementComponent},
-  {path: 'Assigncourses', component:AssignStudentToCourseComponent},
-  {path: 'Logout', component:LogInComponent},
-  {path: 'Courseregisteration', component:CourseRegisterationComponent},
-  {path: 'Grades', component:GradesComponent},
-  {path: 'Admin-dashboard', component:AdminDashboaredComponent}
-  
-]
-
 import { environment } from '../environments/environment.development';
 import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
+import { AdminAddCourseComponent } from './admin/admin-add-course/admin-add-course.component';
 
 
 @NgModule({
@@ -83,7 +68,8 @@ import { AdminHeaderComponent } from './admin/admin-header/admin-header.componen
     StudentHeaderComponent,
     UnauthorizedComponent,
     AdminComponent,
-    AdminHeaderComponent
+    AdminHeaderComponent,
+    AdminAddCourseComponent
   ],
   imports: [
     BrowserModule,

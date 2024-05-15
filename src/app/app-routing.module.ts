@@ -21,6 +21,7 @@ import { UploadMaterialsComponent } from './instructor/upload-materials/upload-m
 import { UsersComponent } from './admin/users/users.component';
 import { CourseManagementComponent } from './admin/course-management/course-management.component';
 import { AssignStudentToCourseComponent } from './admin/assign-student-to-course/assign-student-to-course.component';
+import { AdminAddCourseComponent } from './admin/admin-add-course/admin-add-course.component';
 
 const routes: Routes = [
   { path: 'login', component: LogInComponent, canActivate: [AuthGuard] },
@@ -69,7 +70,8 @@ const routes: Routes = [
       { path: 'Assigncourses', component: AssignStudentToCourseComponent },
       { path: 'Logout', component: LogInComponent },
       { path: 'Courseregisteration', component: CourseRegisterationComponent },
-      { path: 'Grades', component: GradesComponent }
+      { path: 'Grades', component: GradesComponent },
+      { path: 'add-course', component: AdminAddCourseComponent },
     ]
   },
 
