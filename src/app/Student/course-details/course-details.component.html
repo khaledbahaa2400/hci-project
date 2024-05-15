@@ -17,7 +17,7 @@
                                 <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
                             </form>
                             <span>{{m.type}}:</span>
-                            <span>{{m.file}}</span>
+                            <span (click)="downloadFile(m.file)">{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
                             </span>
@@ -38,7 +38,7 @@
                                 <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
                             </form>
                             <span>{{m.type}}:</span>
-                            <span>{{m.file}}</span>
+                            <span (click)="downloadFile(m.file)">{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
                             </span>
@@ -59,7 +59,7 @@
                                 <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
                             </form>
                             <span>{{m.type}}:</span>
-                            <span>{{m.file}}</span>
+                            <span (click)="downloadFile(m.file)">{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
                             </span>
@@ -81,7 +81,7 @@
                                 <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
                             </form>
                             <span>{{m.type}}:</span>
-                            <span>{{m.file}}</span>
+                            <span (click)="downloadFile(m.file)">{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
                             </span>
@@ -124,7 +124,7 @@
                                 <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
                             </form>
                             <span>{{m.type}}:</span>
-                            <span>{{m.file}}</span>
+                            <span (click)="downloadFile(m.file)">{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
                             </span>
@@ -145,7 +145,7 @@
                                 <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
                             </form>
                             <span>{{m.type}}:</span>
-                            <span>{{m.file}}</span>
+                            <span (click)="downloadFile(m.file)">{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
                             </span>
@@ -166,7 +166,7 @@
                                 <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
                             </form>
                             <span>{{m.type}}:</span>
-                            <span>{{m.file}}</span>
+                            <span (click)="downloadFile(m.file)">{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
                             </span>
@@ -187,7 +187,7 @@
                                 <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
                             </form>
                             <span>{{m.type}}:</span>
-                            <span>{{m.file}}</span>
+                            <span (click)="downloadFile(m.file)">{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
                             </span>
@@ -208,7 +208,7 @@
                                 <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
                             </form>
                             <span>{{m.type}}:</span>
-                            <span>{{m.file}}</span>
+                            <span (click)="downloadFile(m.file)">{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
                             </span>

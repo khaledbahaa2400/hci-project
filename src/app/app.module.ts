@@ -55,6 +55,7 @@ const routes: Routes = [
 ]
 
 import { environment } from '../environments/environment.development';
+import { AdminHeaderComponent } from './admin/admin-header/admin-header.component';
 
 
 @NgModule({
@@ -81,7 +82,8 @@ import { environment } from '../environments/environment.development';
     StudentComponent,
     StudentHeaderComponent,
     UnauthorizedComponent,
-    AdminComponent
+    AdminComponent,
+    AdminHeaderComponent
   ],
   imports: [
     BrowserModule,

@@ -42,9 +42,9 @@ export class CourseDetailsComponent {
     for (let i = 0; i < 10; i++) {
       this.isCollapsed[i] = true;
     }
-    for (let i = 0; i < 10; i++) {
-      console.log(this.isCollapsed[i]);
-    }
+    // for (let i = 0; i < 10; i++) {
+    //   console.log(this.isCollapsed[i]);
+    // }
   }
 
   toggleCollapse(index: number) {
