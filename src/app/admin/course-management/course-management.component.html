@@ -1,7 +1,9 @@
 <style>
     .courses {
         width: 80%;
+        
     }
+    
 
     .course_item {
         width: 320px;
@@ -71,172 +73,33 @@
 
 <section>
 
-    <div class="course_page">
-        <div class="courses">
-            <div class="course_item">
-                <div>
-                    <h4>Course:</h4>
-                    <span>OPP</span>
-                </div>
-                <div>
-                    <h6>Credit hours:</h6>
-                    <span>4</span>
-                </div>
-                <div>
-                    <h6>Capacity:</h6>
-                    <span>4</span>
-                </div>
-                <button>Edit Course</button>
-                <hr>
-                <input type="checkbox" name="archive">
-                <label>Archive</label>
-            </div><!-- close course_item -->
-            <div class="course_item">
-                <div>
-                    <h4>Course:</h4>
-                    <span>OPP</span>
-                </div>
-                <div>
-                    <h6>Credit hours:</h6>
-                    <span>4</span>
-                </div>
-                <div>
-                    <h6>Capacity:</h6>
-                    <span>4</span>
-                </div>
-                <button>Edit Course</button>
-                <hr>
-                <input type="checkbox" name="archive">
-                <label>Archive</label>
-            </div><!-- close course_item -->
-            <div class="course_item">
-                <div>
-                    <h4>Course:</h4>
-                    <span>OPP</span>
-                </div>
-                <div>
-                    <h6>Credit hours:</h6>
-                    <span>4</span>
-                </div>
-                <div>
-                    <h6>Capacity:</h6>
-                    <span>4</span>
-                </div>
-                <button>Edit Course</button>
-                <hr>
-                <input type="checkbox" name="archive">
-                <label>Archive</label>
-            </div><!-- close course_item -->
-            <div class="course_item">
-                <div>
-                    <h4>Course:</h4>
-                    <span>OPP</span>
-                </div>
-                <div>
-                    <h6>Credit hours:</h6>
-                    <span>4</span>
-                </div>
-                <div>
-                    <h6>Capacity:</h6>
-                    <span>4</span>
-                </div>
-                <button>Edit Course</button>
-                <hr>
-                <input type="checkbox" name="archive">
-                <label>Archive</label>
-            </div><!-- close course_item -->
-            <div class="course_item">
-                <div>
-                    <h4>Course:</h4>
-                    <span>OPP</span>
-                </div>
-                <div>
-                    <h6>Credit hours:</h6>
-                    <span>4</span>
-                </div>
-                <div>
-                    <h6>Capacity:</h6>
-                    <span>4</span>
-                </div>
-                <button>Edit Course</button>
-                <hr>
-                <input type="checkbox" name="archive">
-                <label>Archive</label>
-            </div><!-- close course_item -->
-            <div class="course_item">
-                <div>
-                    <h4>Course:</h4>
-                    <span>OPP</span>
-                </div>
-                <div>
-                    <h6>Credit hours:</h6>
-                    <span>4</span>
-                </div>
-                <div>
-                    <h6>Capacity:</h6>
-                    <span>4</span>
-                </div>
-                <button>Edit Course</button>
-                <hr>
-                <input type="checkbox" name="archive">
-                <label>Archive</label>
-            </div><!-- close course_item -->
-            <div class="course_item">
-                <div>
-                    <h4>Course:</h4>
-                    <span>OPP</span>
-                </div>
-                <div>
-                    <h6>Credit hours:</h6>
-                    <span>4</span>
-                </div>
-                <div>
-                    <h6>Capacity:</h6>
-                    <span>4</span>
-                </div>
-                <button>Edit Course</button>
-                <hr>
-                <input type="checkbox" name="archive">
-                <label>Archive</label>
-            </div><!-- close course_item -->
-            <div class="course_item">
-                <div>
-                    <h4>Course:</h4>
-                    <span>OPP</span>
-                </div>
-                <div>
-                    <h6>Credit hours:</h6>
-                    <span>4</span>
-                </div>
-                <div>
-                    <h6>Capacity:</h6>
-                    <span>4</span>
-                </div>
-                <button>Edit Course</button>
-                <hr>
-                <input type="checkbox" name="archive">
-                <label>Archive</label>
-            </div><!-- close course_item -->
-            <div class="course_item">
-                <div>
-                    <h4>Course:</h4>
-                    <span>OPP</span>
-                </div>
-                <div>
-                    <h6>Credit hours:</h6>
-                    <span>4</span>
-                </div>
-                <div>
-                    <h6>Capacity:</h6>
-                    <span>4</span>
-                </div>
-                <button>Edit Course</button>
-                <hr>
-                <input type="checkbox" name="archive">
-                <label>Archive</label>
-            </div><!-- close course_item -->
+    <div *ngFor="let t of Courses; let i=index;">
+        <div class="course_page" >
+            <div class="courses" >
+                <div class="course_item">
+                    <div>
+                        <h4>Course:</h4>
+                        <span>{{t.name}}</span>
+                    </div>
+                    <div>
+                        <h6>Credit hours:</h6>
+                        <span>{{t.hours}}</span>
+                    </div>
+                    <div>
+                        <h6>Capacity:</h6>
+                        <span>{{t.capacity}}</span>
+                    </div>
+                    <button>Edit Course</button>
+                    <hr>
+                    <input type="checkbox" name="archive" >
+                    <label>Archive</label>
+                </div><!-- close course_item -->
+                
+            
 
         </div><!-- close course_page -->
     </div><!-- close mycontainer -->
+    </div>
+        
 
 </section>
