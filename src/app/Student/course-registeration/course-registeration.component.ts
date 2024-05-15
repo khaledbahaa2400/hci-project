@@ -23,13 +23,17 @@ export class CourseRegisterationComponent {
       this.Courses = courses;
       console.log("courses"+courses.length)
       this.user = JSON.parse(localStorage.getItem("user") || "{}");
-      this.copyCourses(this.user.email)
+      
+     
     })
     this.coureseRegSub = this.coursesServices.getcoursesReg().subscribe((courses) => {
       this.CoursesReg = courses;
       console.log(this.user)
       console.log("courses"+this.CoursesReg.length)
       this.totalHours = this.totalhours();
+      if(this.CoursesReg.length===0){
+        this.copyCourses(this.user.email)
+      }
     })
 
 
