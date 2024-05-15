@@ -58,10 +58,6 @@ export class InstructorCoursesComponent {
     this.updatedCourse.capacity = this.reactiveFormGroup.value.capacity;
     this.coursesService.updateCourse(this.updatedCourse)
     this.coursesService.showSuccess("Course Updated Successfully")
-    this.reactiveFormGroup.reset({
-      name: "",
-      hours: 3,
-      capacity: 100,
-    });
+    this.showEditModal = false
   }
 }
