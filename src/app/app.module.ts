@@ -35,6 +35,22 @@ import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AdminComponent } from './admin/admin/admin.component';
+
+
+
+const routes: Routes = [
+  {path: 'Users', component:UsersComponent},
+  {path: 'Courses', component:CourseManagementComponent},
+  {path: 'Assigncourses', component:AssignStudentToCourseComponent},
+  {path: 'Logout', component:LogInComponent},
+  {path: 'Courseregisteration', component:CourseRegisterationComponent},
+  {path: 'Grades', component:GradesComponent},
+  {path: 'Admin-dashboard', component:AdminDashboaredComponent}
+  
+
+
+]
+
 import { environment } from '../environments/environment.development';
 
 
