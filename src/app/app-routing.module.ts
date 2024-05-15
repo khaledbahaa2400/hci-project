@@ -63,6 +63,7 @@ const routes: Routes = [
     data: { role: 'admin' },
     children: [
       { path: '', component: AdminDashboaredComponent },
+      { path: 'Admin-dashboard', component: AdminDashboaredComponent },
       { path: 'Users', component: UsersComponent },
       { path: 'Courses', component: CourseManagementComponent },
       { path: 'Assigncourses', component: AssignStudentToCourseComponent },
