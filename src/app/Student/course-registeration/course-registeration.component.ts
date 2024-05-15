@@ -21,12 +21,14 @@ export class CourseRegisterationComponent {
   constructor(private coursesServices: CoursesService, private assessmentsService: AssessmentsService) {
     this.coureseSub = this.coursesServices.getCourses().subscribe((courses) => {
       this.Courses = courses;
+      console.log("courses"+courses.length)
+      this.user = JSON.parse(localStorage.getItem("user") || "{}");
+      this.copyCourses(this.user.email)
     })
     this.coureseRegSub = this.coursesServices.getcoursesReg().subscribe((courses) => {
       this.CoursesReg = courses;
-      this.user = JSON.parse(localStorage.getItem("user") || "{}");
       console.log(this.user)
-      this.copyCourses(this.user.email)
+      console.log("courses"+this.CoursesReg.length)
       this.totalHours = this.totalhours();
     })
 
@@ -35,35 +37,24 @@ export class CourseRegisterationComponent {
 
   }
   copyCourses(email: string) {
-    let x = 0;
-    for (let i = 0; i < this.Courses.length; i++) {
-      for (let j = 0; j < this.CoursesReg.length; j++) {
-        if (this.Courses[i].name === this.CoursesReg[j].course_name && email === this.CoursesReg[j].student_email) {
-          x = 1;
-          break;
-        }
-      }
-      if (x === 0) {
-        this.CoursesReg.push({
-          course_name: this.Courses[i].name,
-          student_email: email,
-          hours: this.Courses[i].hours,
-          year: this.Courses[i].year,
-          isSelected: false,
-          id: ""
-        })
-
-        this.coursesServices.updateRegisterationRequests({
-          course_name: this.Courses[i].name,
-          student_email: email,
-          hours: this.Courses[i].hours,
-          year: this.Courses[i].year,
-          isSelected: false,
-          id: ""
-        }, "add")
-      }
-      x = 0;
-    }
+    // let x = false;
+    // this.Courses.forEach(element => {
+    //   x=this.CoursesReg.some((c)=>{
+    //     return element.name === c.course_name && email === c.student_email;
+    //   })
+    //   if (x === false) {
+    //     this.coursesServices.updateRegisterationRequests({
+    //       course_name: element.name,
+    //       student_email: email,
+    //       hours: element.hours,
+    //       year: element.year,
+    //       isSelected: false,
+    //       id: ""
+    //     }, "add")
+    //     console.log("course added")
+    //   }
+    //   x = false;
+    // }); 
   }
   totalhours() {
     let total = 0;
