@@ -65,4 +65,11 @@ export class CoursesService {
       updateDoc(document, { ...course });
     }
   }
+  updatedatabasee(course: Course, s: any) {
+
+    const CourseCollection = collection(this.firestore, 'courses')
+      const document = doc(CourseCollection, course.id);
+      updateDoc(document, { ...course });
+    }
+  
 }

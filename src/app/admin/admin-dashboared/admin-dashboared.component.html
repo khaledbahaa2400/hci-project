@@ -12,18 +12,18 @@
             <h2>Admin dashboard</h2>
             <nav>
                 <ul>
-                    <li><a routerLink="Users" class="link">Users</a> </li>
-                    <li><a routerLink="Courses" class="link">Courses</a></li>
-                    <li><a routerLink="Assigncourses" class="link">Assign courses</a></li>
+                    <li><a routerLink="/admin/Users" class="link">Users</a> </li>
+                    <li><a routerLink="/admin/Courses" class="link">Courses</a></li>
+                    <li><a routerLink="/admin/Assigncourses" class="link">Assign courses</a></li>
                 </ul>
             </nav> <!-- close nav -->
             <div class="profile">
                 <ul>
                     <li>
-                        <a routerLink="Logout" class="link"><i class="fas fa-user"></i></a>
+                        <a routerLink="/admin/Logout" class="link"><i class="fas fa-user"></i></a>
                         <div></div>
                     </li>
-                    <li><a routerLink="Logout" class="link">Log Out</a></li>
+                    <li><a routerLink="/admin/Logout" class="link">Log Out</a></li>
                 </ul>
             </div> <!-- close profile -->
         </div> <!-- close header-content -->
@@ -33,7 +33,7 @@
     <div class="mycontainer">
         <div class="course_page">
             <div class="courses">
-                <div class="course_item" *ngFor="let t of users; let i=index;">
+                <div class="course_item" >
                     <div>
                         <h4>Users</h4>
 
@@ -41,12 +41,12 @@
                     <div>
 
                         
-                        <span>{{i+1}}</span>
+                        <span>{{users.length}}</span>
 
                     </div>
-                    <button routerLink="/Courses">Show</button>
+                    <button routerLink="/admin/Users">Show</button>
                 </div><!-- close course_item -->
-                <div class="course_item" *ngFor="let t of Courses; let i=index;">
+                <div class="course_item" >
                     <div>
                         <h4>Courses</h4>
 
@@ -54,10 +54,10 @@
                     <div>
 
                         
-                        <span>{{i+1}}</span>
+                        <span>{{Courses.length}}</span>
 
                     </div>
-                    <button routerLink="/Users">Show</button>
+                    <button routerLink="/admin/Courses">Show</button>
                 </div><!-- close course_item -->
                 
                 <div class="course_item">
@@ -68,7 +68,7 @@
                     <div>
 
                     </div>
-                    <button routerLink="/Assigncourses">Show</button>
+                    <button routerLink="/admin/Assigncourses">Show</button>
                 </div><!-- close course_item -->
 
             </div><!-- close courses -->

@@ -18,9 +18,5 @@ export class UsersServicesService {
     return collectionData(usersCollection, { idField: 'id' }) as Observable<User[]>;
   }
 
-  
-
-  
-  
 
 }

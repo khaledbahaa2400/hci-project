@@ -14,7 +14,7 @@ export class AssignService {
 
   constructor(private fireStore: Firestore){}
 
-  getCourses(): Observable<CourseRegistration[]> {
+  getCoursesreg(): Observable<CourseRegistration[]> {
     const courses = collectionData(collection(this.fireStore, 'course-registration'), { idField: 'id' })
     return courses as Observable<CourseRegistration[]>;
   }

@@ -1,13 +1,12 @@
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-
 import { AdminDashboaredComponent } from './admin/admin-dashboared/admin-dashboared.component';
 import { AssignStudentToCourseComponent } from './admin/assign-student-to-course/assign-student-to-course.component';
 import { CourseManagementComponent } from './admin/course-management/course-management.component';
@@ -39,6 +38,7 @@ import { AdminComponent } from './admin/admin/admin.component';
 
 
 const routes: Routes = [
+  
   {path: 'Users', component:UsersComponent},
   {path: 'Courses', component:CourseManagementComponent},
   {path: 'Assigncourses', component:AssignStudentToCourseComponent},
@@ -47,8 +47,6 @@ const routes: Routes = [
   {path: 'Grades', component:GradesComponent},
   {path: 'Admin-dashboard', component:AdminDashboaredComponent}
   
-
-
 ]
 
 import { environment } from '../environments/environment.development';
