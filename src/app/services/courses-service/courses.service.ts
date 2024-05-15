@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Firestore, addDoc, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
+import { Firestore, addDoc, collection, collectionData, deleteDoc, doc, updateDoc } from '@angular/fire/firestore';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 
@@ -39,7 +39,7 @@ export class CoursesService {
       positionClass: 'toast-top-right' // toast position
     });
   }
-  
+
 
   showError(message: string) {
     this.toastr.error(message, 'Error', {
@@ -55,12 +55,9 @@ export class CoursesService {
     return CoursesReg;
   }
 
-  updatedatabase(course: CourseRegistration, s: any) {
-
+  updateRegisterationRequests(course: CourseRegistration, s: any) {
     const CourseRegistrationCollection = collection(this.firestore, 'course-registration')
-
     if (s === "add") {
-
       addDoc(CourseRegistrationCollection, { ...course });
     } else {
       const document = doc(CourseRegistrationCollection, course.id);
@@ -68,18 +65,14 @@ export class CoursesService {
     }
   }
 
-  updatedatabasee(course: Course, s: any) {
-
-    const CourseCollection = collection(this.firestore, 'courses')
-      const document = doc(CourseCollection, course.id);
-      updateDoc(document, { ...course });
-    }
-
-  getUser():Observable<User[]>{
-    const userCollection = collection(this.firestore, 'users')
-    const users = collectionData(userCollection, { idField: 'id' }) as Observable<User[]>;
-    return users ;
+  deleteRegisterationRequest(course: CourseRegistration) {
+    const ref = doc(this.firestore, 'course-registration', course.id);
+    deleteDoc(ref)
   }
 
-  
+  getUser(): Observable<User[]> {
+    const userCollection = collection(this.firestore, 'users')
+    const users = collectionData(userCollection, { idField: 'id' }) as Observable<User[]>;
+    return users;
+  }
 }

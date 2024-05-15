@@ -27,50 +27,32 @@
 <div class="container">
 
 
-<div class="table">
-<div class="table-header">
-    <div class="header__item"><a id="name" class="filter__link" href="#">Student Email</a></div>
-    <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">ID</a></div>
-    <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">Course</a></div>
-    <div class="header__item"><a id="losses" class="filter__link filter__link--number" href="#">Status</a></div>
-    <div class="header__item"><a id="losses" class="filter__link filter__link--number" href="#">Accept</a></div>
-    <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Refuse</a></div>
-</div>
-<div class="table-content" *ngFor="let t of reg; let i=index;">	
-    <div class="table-row">		
-        <div class="table-data">{{t.student_email}}</div>
-        <div class="table-data">{{t.id}}</div>
-        <div class="table-data">{{t.course_name}}</div>
-        <div class="table-data" *ngIf="t.isSelected === true">
-            <button class="btn1" > Selected
-                
-            </button>
-        
+    <div class="table">
+        <div class="table-header">
+            <div class="header__item"><a id="name" class="filter__link" href="#">Student Email</a></div>
+            <div class="header__item"><a id="wins" class="filter__link filter__link--number" href="#">ID</a></div>
+            <div class="header__item"><a id="draws" class="filter__link filter__link--number" href="#">Course</a></div>
+            <div class="header__item"><a id="losses" class="filter__link filter__link--number" href="#">Accept</a></div>
+            <div class="header__item"><a id="total" class="filter__link filter__link--number" href="#">Refuse</a></div>
         </div>
-        <div class="table-data" *ngIf="t.isSelected === false">
-            <button class="btn1" > Not Selected
-                
-            </button>
-        
-        </div>
-        <div class="table-data" >
-            <button class="btn1" > Accept
-                
-            </button>
-        
-        </div>
-        
-        <div class="table-data" >
-            <button class="btn1" > Refuse
-                
-            </button>
-        
+        <div class="table-content" *ngFor="let t of reg; let i=index;">
+            <div *ngIf="t.isSelected">
+                <div class="table-row">
+                    <div class="table-data">{{t.student_email}}</div>
+                    <div class="table-data">{{t.id}}</div>
+                    <div class="table-data">{{t.course_name}}</div>
+
+                    <div class="table-data" (click)="accept(t)">
+                        <button class="btn1"> Accept</button>
+                    </div>
+
+                    <div class="table-data" (click)="reject(t)">
+                        <button class="btn1"> Reject</button>
+                    </div>
+                </div>
+                <hr>
+            </div>
         </div>
     </div>
-    <hr>
-    
-</div>	
-</div>
-
 </div>
 <!--end table-->

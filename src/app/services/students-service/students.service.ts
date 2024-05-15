@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { Firestore, collection, collectionData } from '@angular/fire/firestore';
+import { Firestore, collection, collectionData, doc, updateDoc } from '@angular/fire/firestore';
 
 import { User } from '../../models/User';
 
@@ -14,6 +14,11 @@ export class StudentsService {
   getUsers(): Observable<User[]> {
     const users = collectionData(collection(this.firestore, 'users'), { idField: 'id' })
     return users as Observable<User[]>;
+  }
+
+  updateUser(user: User) {
+    const ref = doc(this.firestore, 'users', user.id);
+    updateDoc(ref, { ...user });
   }
 
   showSuccess(message: string) {
