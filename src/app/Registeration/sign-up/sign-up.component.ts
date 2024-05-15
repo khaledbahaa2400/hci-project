@@ -30,7 +30,7 @@ export class SignUpComponent {
       this.authService.register(newUser)
       this.reactiveFormGroup.reset();
       this.reactiveFormGroup.get('role')?.setValue("instructor");
-      // Return user created successfully
+      this.authService.showSuccess("User Created Successfully")
     }
   }
 }

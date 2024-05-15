@@ -18,7 +18,6 @@ export class StudentsProgressComponent {
   instructorCourses: Course[] = [];
   course?: Course;
   courseName: string = "";
-  studentsProgress: StudentProgress[] = [];
   courseProgress: StudentProgress[] = [];
 
   constructor(private coursesService: CoursesService, private authService: AuthService, private firestore: Firestore) {
@@ -35,13 +34,12 @@ export class StudentsProgressComponent {
 
   filterCoursesByInstructor(): void {
     const currentUser = this.authService.getCurrentUser();
-    this.instructorCourses = this.courses.filter(course => course.instructor == currentUser?.username);
+    this.instructorCourses = this.courses.filter(course => course.instructor == currentUser?.username && !course.isArchived);
     this.course = this.instructorCourses[0];
     this.courseName = this.instructorCourses[0].name;
   }
 
   async calculateStudentsProgress() {
-    this.studentsProgress = [];
     this.courseProgress = [];
     this.course = this.courses.find(obj => obj.name == this.courseName);
 
@@ -70,13 +68,8 @@ export class StudentsProgressComponent {
       if (data) {
         const student = { 'name': data['username'], 'id': data['id'] };
         const progress = done[studentID] / (done[studentID] + notDone[studentID]) * 100
-        this.studentsProgress.push(new StudentProgress("", student, this.course, progress + "%"))
-        this.filterProgressByCourse();
+        this.courseProgress.push(new StudentProgress("", student, this.course, progress + "%"))
       }
     }
-  }
-
-  filterProgressByCourse() {
-    this.courseProgress = this.studentsProgress.filter(obj => obj.course === this.course);
   }
 }

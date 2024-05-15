@@ -2,190 +2,218 @@
     <div class="mycontainer">
         <div class="course_details">
             <h2>
-                <span>OPP</span>
+                <span>{{courseName}} </span>
                 <span>Material Course</span>
             </h2>
             <div class="weak">
-                <a data-bs-toggle="collapse" href="#collapsweak1" role="button" aria-expanded="false"
-                    aria-controls="collapsweak1">
-                    <i class="fas fa-angle-up"></i>Weak:1
+                <a (click)="toggleCollapse(0)">
+                    <i class="fas fa-angle-up"></i>Weak1
                 </a>
-                <div class="collapse" id="collapsweak1">
+                <div [@collapse]="isCollapsed[0] ? 'closed' : 'open'">
                     <hr>
-                    <div>
-                        <div>
-                            <span>Lecture:</span>
-                            <span></span>
+                    <div *ngFor="let m of materials">
+                        <div *ngIf="m.week===1">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
+                            <span>{{m.type}}:</span>
+                            <span>{{m.file}}</span>
+                            <span *ngIf="m.type==='Assessment'">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                            </span>
                         </div>
-                        <div>
-                            <span>Lab:</span>
-                            <span></span>
-                        </div>
-                        <div>
-                            <span>Assignment:</span>
-                            <span></span>
-                        </div>
+
                     </div>
                 </div>
             </div><!-- close weak -->
             <div class="weak">
-                <a data-bs-toggle="collapse" href="#collapsweak2" role="button" aria-expanded="false"
-                    aria-controls="collapsweak2">
-                    <i class="fas fa-angle-up"></i>Weak:2
+                <a (click)="toggleCollapse(1)">
+                    <i class="fas fa-angle-up"></i>Weak2
                 </a>
-                <div class="collapse" id="collapsweak2">
+                <div [@collapse]="isCollapsed[1] ? 'closed' : 'open'">
                     <hr>
-                    <div>
-                        <div>
-                            <span>Lecture:</span>
-                            <span></span>
+                    <div *ngFor="let m of materials">
+                        <div *ngIf="m.week===2">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
+                            <span>{{m.type}}:</span>
+                            <span>{{m.file}}</span>
+                            <span *ngIf="m.type==='Assessment'">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                            </span>
                         </div>
-                        <div>
-                            <span>Lab:</span>
-                            <span></span>
-                        </div>
-                        <div>
-                            <span>Assignment:</span>
-                            <span></span>
-                        </div>
+
                     </div>
                 </div>
             </div><!-- close weak -->
             <div class="weak">
-                <a data-bs-toggle="collapse" href="#collapsweak3" role="button" aria-expanded="false"
-                    aria-controls="collapsweak3">
-                    <i class="fas fa-angle-up"></i>Weak:3
+                <a (click)="toggleCollapse(2)">
+                    <i class="fas fa-angle-up"></i>Weak3
                 </a>
-                <div class="collapse" id="collapsweak3">
+                <div [@collapse]="isCollapsed[2] ? 'closed' : 'open'">
                     <hr>
-                    <div>
-                        <div>
-                            <span>Lecture:</span>
-                            <span></span>
+                    <div *ngFor="let m of materials">
+                        <div *ngIf="m.week===3" class="material-item">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
+                            <span>{{m.type}}:</span>
+                            <span>{{m.file}}</span>
+                            <span *ngIf="m.type==='Assessment'">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                            </span>
                         </div>
-                        <div>
-                            <span>Lab:</span>
-                            <span></span>
-                        </div>
-                        <div>
-                            <span>Assignment:</span>
-                            <span></span>
-                        </div>
+
                     </div>
                 </div>
             </div><!-- close weak -->
             <div class="weak">
-                <a data-bs-toggle="collapse" href="#collapsweak4" role="button" aria-expanded="false"
-                    aria-controls="collapsweak4">
-                    <i class="fas fa-angle-up"></i>Weak:4
+                <a (click)="toggleCollapse(3)">
+                    <i class="fas fa-angle-up"></i>Weak4
                 </a>
-                <div class="collapse" id="collapsweak4">
+                <div [@collapse]="isCollapsed[3] ? 'closed' : 'open'">
                     <hr>
-                    <div>
-                        <div>
-                            <span>Lecture:</span>
-                            <span></span>
+                    <div *ngFor="let m of materials">
+                        <div *ngIf="m.week===4">
+
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
+                            <span>{{m.type}}:</span>
+                            <span>{{m.file}}</span>
+                            <span *ngIf="m.type==='Assessment'">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                            </span>
                         </div>
-                        <div>
-                            <span>Lab:</span>
-                            <span></span>
-                        </div>
-                        <div>
-                            <span>Assignment:</span>
-                            <span></span>
-                        </div>
+
                     </div>
                 </div>
             </div><!-- close weak -->
             <div class="weak">
-                <a data-bs-toggle="collapse" href="#collapsweak5" role="button" aria-expanded="false"
-                    aria-controls="collapsweak5">
-                    <i class="fas fa-angle-up"></i>Weak:5
+                <a (click)="toggleCollapse(4)">
+                    <i class="fas fa-angle-up"></i>Weak5
                 </a>
-                <div class="collapse" id="collapsweak5">
+                <div [@collapse]="isCollapsed[4] ? 'closed' : 'open'">
                     <hr>
-                    <div>
-                        <div>
-                            <span>Lecture:</span>
-                            <span></span>
+                    <div *ngFor="let m of materials">
+                        <div *ngIf="m.week===5">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]"
+                                    (change)="toggleDone()">
+                            </form>
+                            <span>{{m.type}}:</span>
+                            <span (click)="downloadFile(m.file)">{{m.file}}</span>
+                            <span *ngIf="m.type==='Assessment'">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                            </span>
                         </div>
-                        <div>
-                            <span>Lab:</span>
-                            <span></span>
-                        </div>
-                        <div>
-                            <span>Assignment:</span>
-                            <span></span>
-                        </div>
+
                     </div>
                 </div>
             </div><!-- close weak -->
             <div class="weak">
-                <a data-bs-toggle="collapse" href="#collapsweak6" role="button" aria-expanded="false"
-                    aria-controls="collapsweak6">
-                    <i class="fas fa-angle-up"></i>Weak:6
+                <a (click)="toggleCollapse(5)">
+                    <i class="fas fa-angle-up"></i>Weak6
                 </a>
-                <div class="collapse" id="collapsweak6">
+                <div [@collapse]="isCollapsed[5] ? 'closed' : 'open'">
                     <hr>
-                    <div>
-                        <div>
-                            <span>Lecture:</span>
-                            <span></span>
+                    <div *ngFor="let m of materials">
+                        <div *ngIf="m.week===6">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
+                            <span>{{m.type}}:</span>
+                            <span>{{m.file}}</span>
+                            <span *ngIf="m.type==='Assessment'">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                            </span>
                         </div>
-                        <div>
-                            <span>Lab:</span>
-                            <span></span>
-                        </div>
-                        <div>
-                            <span>Assignment:</span>
-                            <span></span>
-                        </div>
+
                     </div>
                 </div>
             </div><!-- close weak -->
             <div class="weak">
-                <a data-bs-toggle="collapse" href="#collapsweak7" role="button" aria-expanded="false"
-                    aria-controls="collapsweak7">
-                    <i class="fas fa-angle-up"></i>Weak:7
+                <a (click)="toggleCollapse(6)">
+                    <i class="fas fa-angle-up"></i>Weak7
                 </a>
-                <div class="collapse" id="collapsweak7">
+                <div [@collapse]="isCollapsed[6] ? 'closed' : 'open'">
                     <hr>
-                    <div>
-                        <div>
-                            <span>Lecture:</span>
-                            <span></span>
+                    <div *ngFor="let m of materials">
+                        <div *ngIf="m.week===7">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
+                            <span>{{m.type}}:</span>
+                            <span>{{m.file}}</span>
+                            <span *ngIf="m.type==='Assessment'">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                            </span>
                         </div>
-                        <div>
-                            <span>Lab:</span>
-                            <span></span>
-                        </div>
-                        <div>
-                            <span>Assignment:</span>
-                            <span></span>
-                        </div>
+
                     </div>
                 </div>
             </div><!-- close weak -->
             <div class="weak">
-                <a data-bs-toggle="collapse" href="#collapsweak8" role="button" aria-expanded="false"
-                    aria-controls="collapsweak8">
-                    <i class="fas fa-angle-up"></i>Weak:8
+                <a (click)="toggleCollapse(7)">
+                    <i class="fas fa-angle-up"></i>Weak8
                 </a>
-                <div class="collapse" id="collapsweak8">
+                <div [@collapse]="isCollapsed[7] ? 'closed' : 'open'">
                     <hr>
-                    <div>
-                        <div>
-                            <span>Lecture:</span>
-                            <span></span>
+                    <div *ngFor="let m of materials">
+                        <div *ngIf="m.week===8">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
+                            <span>{{m.type}}:</span>
+                            <span>{{m.file}}</span>
+                            <span *ngIf="m.type==='Assessment'">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                            </span>
                         </div>
-                        <div>
-                            <span>Lab:</span>
-                            <span></span>
+
+                    </div>
+                </div>
+            </div><!-- close weak -->
+            <div class="weak">
+                <a (click)="toggleCollapse(8)">
+                    <i class="fas fa-angle-up"></i>Weak 9
+                </a>
+                <div [@collapse]="isCollapsed[8] ? 'closed' : 'open'">
+                    <hr>
+                    <div *ngFor="let m of materials">
+                        <div *ngIf="m.week===9">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
+                            <span>{{m.type}}:</span>
+                            <span>{{m.file}}</span>
+                            <span *ngIf="m.type==='Assessment'">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                            </span>
                         </div>
-                        <div>
-                            <span>Assignment:</span>
-                            <span></span>
+
+                    </div>
+                </div>
+            </div><!-- close weak -->
+            <div class="weak">
+                <a (click)="toggleCollapse(9)">
+                    <i class="fas fa-angle-up"></i>Weak 10
+                </a>
+                <div [@collapse]="isCollapsed[9] ? 'closed' : 'open'">
+                    <hr>
+                    <div *ngFor="let m of materials">
+                        <div *ngIf="m.week===10">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
+                            <span>{{m.type}}:</span>
+                            <span>{{m.file}}</span>
+                            <span *ngIf="m.type==='Assessment'">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                            </span>
                         </div>
+
                     </div>
                 </div>
             </div><!-- close weak -->

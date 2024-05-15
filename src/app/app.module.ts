@@ -7,13 +7,19 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+
+
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { ReactiveFormsModule } from '@angular/forms';
+
+
 import { AdminDashboaredComponent } from './admin/admin-dashboared/admin-dashboared.component';
 import { AssignStudentToCourseComponent } from './admin/assign-student-to-course/assign-student-to-course.component';
 import { CourseManagementComponent } from './admin/course-management/course-management.component';
 import { UsersComponent } from './admin/users/users.component';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { ReactiveFormsModule } from '@angular/forms';
 import { InstructorHeaderComponent } from './instructor/shared/instructor-header/instructor-header.component';
 import { AddCourseComponent } from './instructor/add-course/add-course.component';
 import { InstructorCoursesComponent } from './instructor/instructor-courses/instructor-courses.component';
@@ -31,9 +37,8 @@ import { InstructorComponent } from './instructor/instructor/instructor.componen
 import { StudentComponent } from './Student/student/student.component';
 import { StudentHeaderComponent } from './Student/student-header/student-header.component';
 import { UnauthorizedComponent } from './unauthorized/unauthorized.component';
-import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
-import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { AdminComponent } from './admin/admin/admin.component';
+
 
 
 

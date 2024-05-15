@@ -24,14 +24,16 @@ export class LogInComponent {
   async login() {
     try {
       // Call getDocumentByFields to retrieve the document
-      const user = await this.authService.login(this.reactiveFormGroup.value.email, this.reactiveFormGroup.value.password, this.reactiveFormGroup.value.role);
+      const result = await this.authService.login(this.reactiveFormGroup.value.email, this.reactiveFormGroup.value.password, this.reactiveFormGroup.value.role);
 
       // Access property from the returned data
-      if (user) {
+      if (result) {
+        const user = result.data
+        console.log(user)
         const isActivated = user['isActivated'];
         if (isActivated) {
           const year = user['year'] ?? -1;
-          const currentUser = new User(user['id'], user['username'], user['email'], user['password'], user['role'], year, user['isActivated'], []);
+          const currentUser = new User(result.id, user['username'], user['email'], user['password'], user['role'], year, user['isActivated'], []);
           this.authService.setCurrentUser(currentUser)
 
           const role = user['role']
@@ -42,10 +44,10 @@ export class LogInComponent {
           else if (role === "student")
             this.router.navigate(['/student'])
         } else {
-          // Return deactivated account
+          this.authService.showError("User is Deactivated")
         }
       } else {
-        // Return invalid credentials
+        this.authService.showError("Invalid Credentials")
       }
     } catch (error) {
       console.error('Error:', error);

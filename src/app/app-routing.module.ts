@@ -52,7 +52,7 @@ const routes: Routes = [
       { path: 'courses', component: CoursesComponent },
       { path: 'course-registeration', component: CourseRegisterationComponent },
       { path: 'grades', component: GradesComponent },
-      { path: 'course-details', component: CourseDetailsComponent }
+      { path: 'course-details/:courseName', component: CourseDetailsComponent }
     ]
   },
 
@@ -63,6 +63,7 @@ const routes: Routes = [
     data: { role: 'admin' },
     children: [
       { path: '', component: AdminDashboaredComponent },
+      { path: 'Admin-dashboard', component: AdminDashboaredComponent },
       { path: 'Users', component: UsersComponent },
       { path: 'Courses', component: CourseManagementComponent },
       { path: 'Assigncourses', component: AssignStudentToCourseComponent },
