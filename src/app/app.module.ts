@@ -7,7 +7,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { AngularFireModule } from '@angular/fire/compat'
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
-
 import { AdminDashboaredComponent } from './admin/admin-dashboared/admin-dashboared.component';
 import { AssignStudentToCourseComponent } from './admin/assign-student-to-course/assign-student-to-course.component';
 import { CourseManagementComponent } from './admin/course-management/course-management.component';

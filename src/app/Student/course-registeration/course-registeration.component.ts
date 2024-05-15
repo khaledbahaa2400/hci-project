@@ -3,6 +3,8 @@ import { CourseRegistration } from '../../models/CourseRegistration';
 import { CoursesService } from '../../services/courses-service/courses.service';
 import { Course } from '../../models/Course';
 import { Subscription } from 'rxjs';
+import { AssessmentsService } from '../../services/assessments-service/assessments.service';
+import { User } from '../../models/User';
 
 @Component({
   selector: 'app-course-registeration',
@@ -14,16 +16,17 @@ export class CourseRegisterationComponent {
   Courses:Course[]=[];
   coureseRegSub:Subscription;
   CoursesReg:CourseRegistration[]=[];
-  total:number=0;
-  
-  constructor(private coursesServices:CoursesService){
+  totalHours:number=0;
+  user: any;
+  constructor(private coursesServices:CoursesService,private assessmentsService: AssessmentsService){
      this.coureseSub=this.coursesServices.getCourses().subscribe((courses)=>{
        this.Courses=courses;
      })
      this.coureseRegSub=this.coursesServices.getcoursesReg().subscribe((courses)=>{
       this.CoursesReg=courses;
-      const user = JSON.parse(localStorage.getItem("user") || "{}");
-      this.copyCourses(user.email)
+      this.user = JSON.parse(localStorage.getItem("user") || "{}");
+      this.copyCourses(this.user.email)
+      this.totalHours=this.totalhours();
     })
    
    
@@ -33,38 +36,34 @@ export class CourseRegisterationComponent {
   
   copyCourses(email:string){
     let x=0;
-   
-         for(let i=0;i<this.Courses.length;i++){
-          console.log("add new course")
-          for(let j=0;j<this.CoursesReg.length;j++){
-            if(this.Courses[i].name===this.CoursesReg[j].course_name){
-              
-              x=1;
-              break;
-            }
-          }
-          if(x===0){
-            
-             this.CoursesReg.push({
-              course_name: this.Courses[i].name,
-              student_email:email, 
-              hours: this.Courses[i].hours,
-              year: this.Courses[i].year,
-              isSelected: false,
-              id:""
-             })
-             
-             this.coursesServices.updatedatabase({
-              course_name: this.Courses[i].name,
-              student_email:email, 
-              hours: this.Courses[i].hours,
-              year: this.Courses[i].year,
-              isSelected: false,
-              id:""
-                  },"add")
-          }
-          x=0;
+      for(let i=0;i<this.Courses.length;i++){
+      for(let j=0;j<this.CoursesReg.length;j++){
+        if(this.Courses[i].name===this.CoursesReg[j].course_name && email===this.CoursesReg[j].student_email){         
+          x=1;
+          break;
         }
+      }
+      if(x===0){    
+          this.CoursesReg.push({
+          course_name: this.Courses[i].name,
+          student_email:email, 
+          hours: this.Courses[i].hours,
+          year: this.Courses[i].year,
+          isSelected: false,
+          id:""
+          })
+          
+          this.coursesServices.updatedatabase({
+          course_name: this.Courses[i].name,
+          student_email:email, 
+          hours: this.Courses[i].hours,
+          year: this.Courses[i].year,
+          isSelected: false,
+          id:""
+              },"add")
+      }
+      x=0;
+    }
   }
   totalhours(){
     let total=0;
@@ -72,15 +71,18 @@ export class CourseRegisterationComponent {
       if(this.CoursesReg[j].isSelected===true)
         total+=this.CoursesReg[j].hours;
     }
+    console.log("total"+total);
     return total;
   }
 
   toggleSelection(c:CourseRegistration) {
     this.CoursesReg[this.CoursesReg.indexOf(c)].isSelected=!this.CoursesReg[this.CoursesReg.indexOf(c)].isSelected;
     this.coursesServices.updatedatabase(c,"update");
-    this.total=this.totalhours();
+    this.totalHours=this.totalhours();
   }
-  saveChanges(){}
+  saveChanges(){
+    this.assessmentsService.showSuccess('Registration has been saved pending confirmation from the academic advisor.')
+  }
   ngOnDestroy(){
     this.coureseRegSub.unsubscribe();
     this.coureseSub.unsubscribe();

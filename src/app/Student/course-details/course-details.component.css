@@ -24,7 +24,7 @@ body {
     border: 5px solid #ddd;
     width: 100%;
     border-radius: 10px;
-    margin: 5px;
+    margin: 10px;
     padding-left: 15px;
  }
  .weak a{
@@ -34,10 +34,14 @@ body {
  }
 .weak hr{
     width: 100px;
-    border: 3px solid grey;
+    border: 1px solid black;
 }
-.weak i{
+.weak a i{
     font-size: 20px;
     margin: 5px;
     transform: rotateX(180deg);
 }
+.weak span {
+margin-left: 10px;
+}
+

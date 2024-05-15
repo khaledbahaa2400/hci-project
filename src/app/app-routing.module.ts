@@ -52,7 +52,7 @@ const routes: Routes = [
       { path: 'courses', component: CoursesComponent },
       { path: 'course-registeration', component: CourseRegisterationComponent },
       { path: 'grades', component: GradesComponent },
-      { path: 'course-details', component: CourseDetailsComponent }
+      { path: 'course-details/:courseName', component: CourseDetailsComponent }
     ]
   },
 

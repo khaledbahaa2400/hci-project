@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 
 import { Course } from '../../models/Course';
 import { CourseRegistration } from '../../models/CourseRegistration';
+import { User } from '../../models/User';
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +39,7 @@ export class CoursesService {
       positionClass: 'toast-top-right' // toast position
     });
   }
+  
 
   showError(message: string) {
     this.toastr.error(message, 'Error', {
@@ -65,4 +67,10 @@ export class CoursesService {
       updateDoc(document, { ...course });
     }
   }
+  getUser():Observable<User[]>{
+    const userCollection = collection(this.firestore, 'users')
+    const users = collectionData(userCollection, { idField: 'id' }) as Observable<User[]>;
+    return users ;
+  }
+  
 }

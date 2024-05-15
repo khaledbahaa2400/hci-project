@@ -65,12 +65,12 @@ body {
 }
 
 .houre_item div{
-    width: 130px;
-    height: 65px;
+    width: 150px;
+    height: 75px;
     border: 2px solid #ddd;
-    border-radius: 65px 65px 0 0;
+    border-radius: 75px 75px 0 0;
     text-align: center;
-    padding: 4px;
+    padding: 2px;
     margin: auto;
 
 }
