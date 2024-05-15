@@ -5,7 +5,7 @@
 }
 body {
     font-family: "pt-sans",sans-serif;
-    
+    background-color: #9AD0C2;
 }
 .mycontainer{
     width: 100%;
@@ -36,14 +36,14 @@ body {
     align-self: self-start;
 }
 .course_item{
-    border: 5px solid #ddd;
+    border: 5px solid #2D9596;
     width: 300px;
     border-radius: 10px;
     height: 200px;
 }
 .course_item div{
    margin: 30px 10px;
-   
+   height: 30px;
 }
 .course_item h4{
     display: inline;
@@ -57,17 +57,19 @@ body {
    width: 100px;
    height: 30px;
    border-radius: 10px;
+   color: #fff;
+   background-color: #2D9596;
 }
 .houre_item{
     width: 200px;
     margin: 50px 0px;
- 
+    
 }
 
 .houre_item div{
     width: 150px;
     height: 75px;
-    border: 2px solid #ddd;
+    border: 2px solid #2D9596;
     border-radius: 75px 75px 0 0;
     text-align: center;
     padding: 2px;
@@ -77,6 +79,7 @@ body {
 .houre_item progress{
     margin: 20px 0px;
     width: 200px;
+    background-color: #265073;
     
 }
 .hours button{
@@ -84,4 +87,10 @@ body {
     width: 100px;
     height: 30px; 
     border-radius: 10px;
+    color: #fff;
+    background-color: #2D9596;
+    
+}
+button:hover{
+    background-color: #169BD5;
 }
