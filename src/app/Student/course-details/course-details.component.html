@@ -2,25 +2,27 @@
     <div class="mycontainer">
         <div class="course_details">
             <h2>
-                <span >{{courseName}}   </span>
+                <span>{{courseName}} </span>
                 <span>Material Course</span>
             </h2>
             <div class="weak">
                 <a (click)="toggleCollapse(0)">
                     <i class="fas fa-angle-up"></i>Weak1
                 </a>
-                <div  [@collapse]="isCollapsed[0] ? 'closed' : 'open'">
+                <div [@collapse]="isCollapsed[0] ? 'closed' : 'open'">
                     <hr>
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===1">
-                            <input type="checkbox" [checked]="m.isDone[user.id]">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
                             <span>{{m.type}}:</span>
                             <span>{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
-                             </span>
+                            </span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div><!-- close weak -->
@@ -28,18 +30,20 @@
                 <a (click)="toggleCollapse(1)">
                     <i class="fas fa-angle-up"></i>Weak2
                 </a>
-                <div  [@collapse]="isCollapsed[1] ? 'closed' : 'open'">
+                <div [@collapse]="isCollapsed[1] ? 'closed' : 'open'">
                     <hr>
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===2">
-                            <input type="checkbox" [checked]="m.isDone[user.id]">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
                             <span>{{m.type}}:</span>
                             <span>{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
-                             </span>
+                            </span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div><!-- close weak -->
@@ -47,18 +51,20 @@
                 <a (click)="toggleCollapse(2)">
                     <i class="fas fa-angle-up"></i>Weak3
                 </a>
-                <div  [@collapse]="isCollapsed[2] ? 'closed' : 'open'">
+                <div [@collapse]="isCollapsed[2] ? 'closed' : 'open'">
                     <hr>
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===3" class="material-item">
-                            <input type="checkbox" [checked]="m.isDone[user.id]">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
                             <span>{{m.type}}:</span>
                             <span>{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
-                               <input type="file" id="fileInput" (change)="handleFileInput($event)">
+                                <input type="file" id="fileInput" (change)="handleFileInput($event)">
                             </span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div><!-- close weak -->
@@ -66,18 +72,21 @@
                 <a (click)="toggleCollapse(3)">
                     <i class="fas fa-angle-up"></i>Weak4
                 </a>
-                <div  [@collapse]="isCollapsed[3] ? 'closed' : 'open'">
+                <div [@collapse]="isCollapsed[3] ? 'closed' : 'open'">
                     <hr>
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===4">
-                            <input type="checkbox" [checked]="m.isDone[user.id]">
+
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
                             <span>{{m.type}}:</span>
                             <span>{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
-                             </span>
+                            </span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div><!-- close weak -->
@@ -85,18 +94,21 @@
                 <a (click)="toggleCollapse(4)">
                     <i class="fas fa-angle-up"></i>Weak5
                 </a>
-                <div  [@collapse]="isCollapsed[4] ? 'closed' : 'open'">
+                <div [@collapse]="isCollapsed[4] ? 'closed' : 'open'">
                     <hr>
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===5">
-                            <input type="checkbox" [checked]="m.isDone[user.id]">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]"
+                                    (change)="toggleDone()">
+                            </form>
                             <span>{{m.type}}:</span>
-                            <span>{{m.file}}</span>
+                            <span (click)="downloadFile(m.file)">{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
-                             </span>
+                            </span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div><!-- close weak -->
@@ -104,18 +116,20 @@
                 <a (click)="toggleCollapse(5)">
                     <i class="fas fa-angle-up"></i>Weak6
                 </a>
-                <div  [@collapse]="isCollapsed[5] ? 'closed' : 'open'">
+                <div [@collapse]="isCollapsed[5] ? 'closed' : 'open'">
                     <hr>
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===6">
-                            <input type="checkbox" [checked]="m.isDone[user.id]">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
                             <span>{{m.type}}:</span>
                             <span>{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
-                             </span>
+                            </span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div><!-- close weak -->
@@ -123,18 +137,20 @@
                 <a (click)="toggleCollapse(6)">
                     <i class="fas fa-angle-up"></i>Weak7
                 </a>
-                <div  [@collapse]="isCollapsed[6] ? 'closed' : 'open'">
+                <div [@collapse]="isCollapsed[6] ? 'closed' : 'open'">
                     <hr>
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===7">
-                            <input type="checkbox" [checked]="m.isDone[user.id]">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
                             <span>{{m.type}}:</span>
                             <span>{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
-                             </span>
+                            </span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div><!-- close weak -->
@@ -142,18 +158,20 @@
                 <a (click)="toggleCollapse(7)">
                     <i class="fas fa-angle-up"></i>Weak8
                 </a>
-                <div  [@collapse]="isCollapsed[7] ? 'closed' : 'open'">
+                <div [@collapse]="isCollapsed[7] ? 'closed' : 'open'">
                     <hr>
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===8">
-                            <input type="checkbox" [checked]="m.isDone[user.id]">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
                             <span>{{m.type}}:</span>
                             <span>{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
-                             </span>
+                            </span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div><!-- close weak -->
@@ -161,18 +179,20 @@
                 <a (click)="toggleCollapse(8)">
                     <i class="fas fa-angle-up"></i>Weak 9
                 </a>
-                <div  [@collapse]="isCollapsed[8] ? 'closed' : 'open'">
+                <div [@collapse]="isCollapsed[8] ? 'closed' : 'open'">
                     <hr>
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===9">
-                            <input type="checkbox" [checked]="m.isDone[user.id]">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
                             <span>{{m.type}}:</span>
                             <span>{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
-                             </span>
+                            </span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div><!-- close weak -->
@@ -180,18 +200,20 @@
                 <a (click)="toggleCollapse(9)">
                     <i class="fas fa-angle-up"></i>Weak 10
                 </a>
-                <div  [@collapse]="isCollapsed[9] ? 'closed' : 'open'">
+                <div [@collapse]="isCollapsed[9] ? 'closed' : 'open'">
                     <hr>
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===10">
-                            <input type="checkbox" [checked]="m.isDone[user.id]">
+                            <form action="">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                            </form>
                             <span>{{m.type}}:</span>
                             <span>{{m.file}}</span>
                             <span *ngIf="m.type==='Assessment'">
                                 <input type="file" id="fileInput" (change)="handleFileInput($event)">
-                             </span>
+                            </span>
                         </div>
-                        
+
                     </div>
                 </div>
             </div><!-- close weak -->

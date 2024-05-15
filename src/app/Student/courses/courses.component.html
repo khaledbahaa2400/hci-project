@@ -2,12 +2,12 @@
     <div class="mycontainer">
         <div class="mycourse_page">
             <div class="mycourses" *ngIf="courses.length!==0">
-                <div class="mycourses_item"  *ngFor="let course of courses" (click)="courseDetails(course)">
-                    <div >
+                <div class="mycourses_item" *ngFor="let course of courses" (click)="courseDetails(course)">
+                    <div>
                         <h4>Course: </h4>
                         <span>{{course}}</span>
                     </div>
-                    <progress value="50" max="100"></progress>
+                    <progress value="{{ progress[course] }}" max="100"></progress>
                 </div><!-- close mycourse_item -->
             </div><!-- close mycourses -->
 

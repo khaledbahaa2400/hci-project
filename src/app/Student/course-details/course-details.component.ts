@@ -6,12 +6,14 @@ import { Course } from '../../models/Course';
 import { CoursesService } from '../../services/courses-service/courses.service';
 import { Material } from '../../models/Material';
 import { User } from '../../models/User';
+import { AuthService } from '../../services/auth-service/auth.service';
+import { AngularFireStorage } from '@angular/fire/compat/storage';
 
 @Component({
   selector: 'app-course-details',
   templateUrl: './course-details.component.html',
   styleUrl: './course-details.component.css',
-  animations:[
+  animations: [
     trigger('collapse', [
       state('open', style({ height: '*' })),
       state('closed', style({ height: 0, overflow: 'hidden' })),
@@ -20,46 +22,53 @@ import { User } from '../../models/User';
   ]
 })
 export class CourseDetailsComponent {
-  coureseSub:Subscription;
-  Courses:Course[]=[];
-  materials:Material []|undefined=[];
-  currentCourse:Course | undefined;
+  coureseSub: Subscription;
+  Courses: Course[] = [];
+  materials: Material[] = [];
+  currentCourse: Course;
   isCollapsed: boolean[] = [];
-  courseName:any;
-  user:User;
-  constructor(private coursesServices:CoursesService,private route: ActivatedRoute){
-    this.coureseSub=this.coursesServices.getCourses().subscribe((courses)=>{
-      this.Courses=courses;
-      this.currentCourse=this.getCourseByName(this.courseName);
-      this.materials=this.currentCourse?.materials;
-      console.log(this.materials)
-      
+  courseName: any;
+  user: User;
+
+  constructor(private coursesServices: CoursesService, private route: ActivatedRoute, private authService: AuthService, private storage: AngularFireStorage) {
+    this.coureseSub = this.coursesServices.getCourses().subscribe((courses) => {
+      this.Courses = courses;
+      this.currentCourse = this.getCourseByName(this.courseName) ?? new Course("", "", "", 0, 0, 0, []);
+      this.materials = this.currentCourse?.materials ?? [];
+
     })
-    this.user = JSON.parse(localStorage.getItem("user") || "{}");
+    this.user = this.authService.getCurrentUser() ?? new User("", "", "", "", "", 4, true, []);
+    this.currentCourse = this.getCourseByName(this.courseName) ?? new Course("", "", "", 0, 0, 0, []);
     for (let i = 0; i < 10; i++) {
       this.isCollapsed[i] = true;
     }
     for (let i = 0; i < 10; i++) {
       console.log(this.isCollapsed[i]);
     }
-   
   }
-  
+
   toggleCollapse(index: number) {
     this.isCollapsed[index] = !this.isCollapsed[index];
   }
+
+  toggleDone() {
+    this.coursesServices.updateCourse(this.currentCourse)
+  }
+
   getCourseByName(name: string): Course | undefined {
     return this.Courses.find(course => course.name === name);
   }
-  // downloadFile(fileName: string) {
-  //   const fileRef = this.storage.ref(uploads/${fileName});
-  //   fileRef.getDownloadURL().subscribe(downloadURL => {
-  //     const anchor = document.createElement('a');
-  //     anchor.href = downloadURL;
-  //     anchor.download = fileName;
-  //     anchor.click();
-  //   });
-  // }
+
+  downloadFile(fileName: string) {
+    const fileRef = this.storage.ref(`uploads/${fileName}`);
+    fileRef.getDownloadURL().subscribe(downloadURL => {
+      const anchor = document.createElement('a');
+      anchor.href = downloadURL;
+      anchor.download = fileName;
+      anchor.click();
+    });
+  }
+
   handleFileInput(event: any) {
     const file = event.target.files[0];
     if (file) {
@@ -67,11 +76,11 @@ export class CourseDetailsComponent {
       console.log("Selected file:", file);
     }
   }
-  
+
   ngOnInit(): void {
-    this.route.params.subscribe(params => {    
-      this.courseName = params['courseName']; 
-      
+    this.route.params.subscribe(params => {
+      this.courseName = params['courseName'];
+
     });
-}
+  }
 }

@@ -89,8 +89,11 @@ export class AuthService {
         // Retrieve the first document (assuming there's only one document matching the query)
         const docSnapshot = querySnapshot.docs[0];
 
-        // Return the document data
-        return docSnapshot.data();
+        // Get the document ID
+        const docId = docSnapshot.id;
+
+        // Return the document data along with the ID
+        return { id: docId, data: docSnapshot.data() };
       } else {
         // No document matching the query
         return null;
