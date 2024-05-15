@@ -9,7 +9,6 @@ export class Course {
     year: number;
     isArchived: boolean
     materials: Material[];
-    isArchived:boolean;
 
 
     constructor(id: string, name: string, instructor: string, hours: number, capacity: number, year: number, isArchived: boolean, materials: Material[]) {
@@ -22,6 +21,5 @@ export class Course {
         this.year = year;
         this.isArchived = isArchived;
         this.materials = materials;
-        this.isArchived = isArchived;
     }
 }

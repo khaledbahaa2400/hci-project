@@ -14,7 +14,7 @@ export class AddCourseComponent {
   reactiveFormGroup: FormGroup;
   year: number = 1;
 
-  constructor(private coursesService: CoursesService, private authService: AuthService ) {
+  constructor(private coursesService: CoursesService, private authService: AuthService) {
     this.reactiveFormGroup = new FormGroup({
       name: new FormControl("", Validators.required),
       hours: new FormControl(3, [Validators.required, Validators.min(1)]),
@@ -30,16 +30,14 @@ export class AddCourseComponent {
       currentUser?.username ?? "",
       this.reactiveFormGroup.value.hours,
       this.reactiveFormGroup.value.capacity,
-
-      this.year, [],
-      false));
+      this.year, false, []));
 
     this.coursesService.showSuccess("Course Added Successfully")
     this.reactiveFormGroup.reset({
       name: "",
       hours: 3,
       capacity: 100,
-      
+
     });
   }
 }

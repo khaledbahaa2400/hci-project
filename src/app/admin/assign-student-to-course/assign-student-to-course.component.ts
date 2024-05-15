@@ -12,16 +12,12 @@ import { AssignService } from '../../assign-course-to-student/assign.service';
 })
 export class AssignStudentToCourseComponent {
 
-  regSub:Subscription;
-  reg:CourseRegistration[]=[];
-  
-  constructor(private Assign:AssignService){
-     this.regSub=this.Assign.getCoursesreg().subscribe((data)=>{
-       this.reg=data;
-     })
-}
+  regSub: Subscription;
+  reg: CourseRegistration[] = [];
 
-
-
-
+  constructor(private Assign: AssignService) {
+    this.regSub = this.Assign.getCoursesreg().subscribe((data) => {
+      this.reg = data;
+    })
+  }
 }
