@@ -42,7 +42,8 @@ export class UploadMaterialsComponent {
   }
 
   filterCoursesByYear(): void {
-    this.yearCourses = this.courses.filter(course => course.year == this.reactiveFormGroup.value.year && !course.isArchived);
+    const currentUser = this.authService.getCurrentUser();
+    this.yearCourses = this.courses.filter(course => course.year == this.reactiveFormGroup.value.year && course.instructor == currentUser?.username && !course.isArchived);
     this.reactiveFormGroup.get('course_name')?.setValue(this.yearCourses[0].name);
   }
 

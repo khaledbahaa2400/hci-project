@@ -14,7 +14,8 @@
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===1">
                             <form action="">
-                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]"
+                                    (change)="toggleDone()">
                             </form>
                             <span>{{m.type}}:</span>
                             <span (click)="downloadFile(m.file)">{{m.file}}</span>
@@ -35,7 +36,8 @@
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===2">
                             <form action="">
-                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]"
+                                    (change)="toggleDone()">
                             </form>
                             <span>{{m.type}}:</span>
                             <span (click)="downloadFile(m.file)">{{m.file}}</span>
@@ -56,7 +58,8 @@
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===3" class="material-item">
                             <form action="">
-                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]"
+                                    (change)="toggleDone()">
                             </form>
                             <span>{{m.type}}:</span>
                             <span (click)="downloadFile(m.file)">{{m.file}}</span>
@@ -78,7 +81,8 @@
                         <div *ngIf="m.week===4">
 
                             <form action="">
-                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]"
+                                    (change)="toggleDone()">
                             </form>
                             <span>{{m.type}}:</span>
                             <span (click)="downloadFile(m.file)">{{m.file}}</span>
@@ -121,7 +125,8 @@
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===6">
                             <form action="">
-                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]"
+                                    (change)="toggleDone()">
                             </form>
                             <span>{{m.type}}:</span>
                             <span (click)="downloadFile(m.file)">{{m.file}}</span>
@@ -142,7 +147,8 @@
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===7">
                             <form action="">
-                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]"
+                                    (change)="toggleDone()">
                             </form>
                             <span>{{m.type}}:</span>
                             <span (click)="downloadFile(m.file)">{{m.file}}</span>
@@ -163,7 +169,8 @@
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===8">
                             <form action="">
-                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]"
+                                    (change)="toggleDone()">
                             </form>
                             <span>{{m.type}}:</span>
                             <span (click)="downloadFile(m.file)">{{m.file}}</span>
@@ -184,7 +191,8 @@
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===9">
                             <form action="">
-                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]"
+                                    (change)="toggleDone()">
                             </form>
                             <span>{{m.type}}:</span>
                             <span (click)="downloadFile(m.file)">{{m.file}}</span>
@@ -205,7 +213,8 @@
                     <div *ngFor="let m of materials">
                         <div *ngIf="m.week===10">
                             <form action="">
-                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]">
+                                <input name="isDone" type="checkbox" [(ngModel)]="m.isDone[user.id]"
+                                    (change)="toggleDone()">
                             </form>
                             <span>{{m.type}}:</span>
                             <span (click)="downloadFile(m.file)">{{m.file}}</span>

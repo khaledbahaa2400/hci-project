@@ -4,6 +4,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AssessmentsService } from '../../services/assessments-service/assessments.service';
 import { Assessment } from '../../models/Assessment';
 import { Subscription } from 'rxjs';
+import { AuthService } from '../../services/auth-service/auth.service';
 
 @Component({
   selector: 'app-upload-grades',
@@ -16,7 +17,7 @@ export class UploadGradesComponent {
   assessments: Assessment[] = [];
   yearAssessments: Assessment[] = [];
 
-  constructor(private assessmentsService: AssessmentsService) {
+  constructor(private assessmentsService: AssessmentsService, private authService: AuthService) {
     this.reactiveFormGroup = new FormGroup({
       year: new FormControl(1, Validators.required),
       name: new FormControl("", Validators.required),
@@ -56,7 +57,8 @@ export class UploadGradesComponent {
   }
 
   filterAssessmentsByYear() {
-    this.yearAssessments = this.assessments.filter(assessment => assessment.year == this.reactiveFormGroup.value.year);
+    const user = this.authService.getCurrentUser()
+    this.yearAssessments = this.assessments.filter(assessment => assessment.year == this.reactiveFormGroup.value.year && assessment.instructor == user?.username);
     this.reactiveFormGroup.get("name")?.setValue(this.yearAssessments[0]?.name);
   }
 

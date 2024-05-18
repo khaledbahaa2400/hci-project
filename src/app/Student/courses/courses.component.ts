@@ -16,31 +16,25 @@ import { AuthService } from '../../services/auth-service/auth.service';
 export class CoursesComponent {
   coureseSub: Subscription;
   Courses: Course[] = [];
-  userSub: Subscription;
-  users: User[] = [];
-  courses: string[] = [];
+  user: User
+  courses: Course[] = [];
   progress: { [key: string]: number } = {};
 
   constructor(private coursesServices: CoursesService, private router: Router, private authService: AuthService) {
-    this.coureseSub = this.coursesServices.getCourses().subscribe((courses) => {
-      this.Courses = courses;
+    this.coureseSub = this.coursesServices.getCourses().subscribe((course) => {
+      this.Courses = course;
+      this.user = authService.getCurrentUser() ?? new User("", "", "", "", "", 0, true, [])
+      this.usercourses();
       this.calculateProgress();
+      console.log(this.user)
     })
-    this.userSub = this.coursesServices.getUser().subscribe((user) => {
-      this.users = user;
-      const useremail = JSON.parse(localStorage.getItem("user") || "{}");
-      this.usercourses(useremail.email);
-    })
+    this.user = authService.getCurrentUser() ?? new User("", "", "", "", "", 0, true, [])
   }
 
-  usercourses(useremail: String) {
-    for (let i = 0; i < this.users.length; i++) {
-      if (this.users[i].email === useremail) {
-        for (let j = 0; j < this.users[i].courses.length; j++) {
-          this.courses[j] = this.getCourseName(this.Courses[j].id);
-          console.log(this.courses);
-        }
-      }
+  usercourses() {
+    for (let j = 0; j < this.user.courses.length; j++) {
+      this.courses.push(this.getCourseName(this.user.courses[j]));
+      console.log(this.courses);
     }
   }
 
@@ -50,30 +44,35 @@ export class CoursesComponent {
     let notDone: { [key: string]: number } = {};
 
     const user = this.authService.getCurrentUser()
+    console.log(user);
     if (user) {
       if (!(user.id in done)) {
         done[user.id] = 0;
         notDone[user.id] = 0;
       }
 
-      this.Courses.forEach(course => {
-        course.materials.forEach(material => {
-          if (material.isDone[user.id])
-            done[user.id]++;
-          else
-            notDone[user.id]++;
-        });
+      console.log(this.courses)
+      this.courses.forEach(course => {
+        if (course.materials) {
+          course.materials.forEach(material => {
+            console.log(material)
+            if (material.isDone[user.id])
+              done[user.id]++;
+            else
+              notDone[user.id]++;
 
-        const progress = done[user.id] / (done[user.id] + notDone[user.id]) * 100
-        console.log(course.name, progress)
-        this.progress[course.name] = progress
+            const progress = done[user.id] / (done[user.id] + notDone[user.id]) * 100
+            console.log(course.name, progress)
+            this.progress[course.name] = progress
+          });
+        }
       });
     }
   }
 
-  getCourseName(id: string): string {
-    const course: Course | undefined = this.Courses.find(c => c.id === id);
-    return course ? course.name : ""; // If course is found, return its name, otherwise return an empty string
+  getCourseName(id: string): Course {
+    const course: Course = this.Courses.find(c => c.id === id) ?? new Course("", "", "", 0, 0, 0, false, []);
+    return course// If course is found, return its name, otherwise return an empty string
   }
 
   courseDetails(courseName: String) {

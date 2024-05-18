@@ -15,38 +15,27 @@ import { CourseRegistration } from '../../models/CourseRegistration';
   styleUrl: './course-management.component.css'
 })
 export class CourseManagementComponent {
-  coureseSub:Subscription;
-  Courses:Course[]=[];
-  updatedCourse: Course ;
+  coureseSub: Subscription;
+  Courses: Course[] = [];
+  updatedCourse: Course;
   showEditModal = false;
-  reactiveFormGroup: FormGroup ;
+  reactiveFormGroup: FormGroup;
   totalHours: any;
-  
-  
-  constructor(private courseService:CoursesService){
-     this.coureseSub=this.courseService.getCourses().subscribe((data)=>{
-       this.Courses=data;
-     })
-     this.reactiveFormGroup = new FormGroup({
+
+
+  constructor(private courseService: CoursesService) {
+    this.coureseSub = this.courseService.getCourses().subscribe((data) => {
+      this.Courses = data;
+    })
+    this.reactiveFormGroup = new FormGroup({
       name: new FormControl("", Validators.required),
       hours: new FormControl(3, [Validators.required, Validators.min(1)]),
       capacity: new FormControl(100, [Validators.required, Validators.min(100)])
     })
-
-   
-
-    this.updatedCourse = this.Courses[0];this.reactiveFormGroup = new FormGroup({
-      name: new FormControl("", Validators.required),
-      hours: new FormControl(3, [Validators.required, Validators.min(1)]),
-      capacity: new FormControl(100, [Validators.required, Validators.min(100)])
-    })
-
-    
-
     this.updatedCourse = this.Courses[0];
-}
+  }
 
-selectedOption: number = 1; // Variable to store the selected option
+  selectedOption: number = 1; // Variable to store the selected option
 
   // Method to handle option selection
   onSelect(option: number) {
@@ -74,11 +63,11 @@ selectedOption: number = 1; // Variable to store the selected option
     });
   }
 
-  toggleSelection(c:Course) {
+  toggleSelection(c: Course) {
     this.courseService.updateCourse(c);
     console.log(c.isArchived);
     console.log(this.Courses[this.Courses.indexOf(c)]);
-    
+
   }
-  
+
 }

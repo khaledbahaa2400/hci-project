@@ -52,6 +52,7 @@ nav ul li {
     position: relative;
     padding: 10px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .profile ul li {

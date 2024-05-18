@@ -42,8 +42,8 @@ export class AuthService {
   }
 
   register(user: User) {
-    const userDocument = { 'username': user.username, 'email': user.email, 'password': user.password, 'role': user.role, 'isActivated': false }
-    addDoc(collection(this.fireStore, 'users'), userDocument);
+    //const userDocument = { 'username': user.username, 'email': user.email, 'password': user.password, 'role': user.role, 'isActivated': false }
+    addDoc(collection(this.fireStore, 'users'), { ...user });
   }
 
   async checkUser(email: string): Promise<any> {

@@ -12,40 +12,38 @@ import { User } from '../../models/User';
   styleUrl: './course-registeration.component.css'
 })
 export class CourseRegisterationComponent {
-  coureseSub: Subscription;
+  coureseSub: Subscription | undefined;
   Courses: Course[] = [];
   coureseRegSub: Subscription;
   CoursesReg: CourseRegistration[] = [];
   totalHours: number = 0;
   user: any;
   constructor(private coursesServices: CoursesService, private assessmentsService: AssessmentsService) {
-    this.coureseSub = this.coursesServices.getCourses().subscribe((courses) => {
-      this.Courses = courses;
-      console.log("courses"+courses.length)
-      this.user = JSON.parse(localStorage.getItem("user") || "{}");
-      
-     
-    })
     this.coureseRegSub = this.coursesServices.getcoursesReg().subscribe((courses) => {
       this.CoursesReg = courses;
-      console.log(this.user)
-      console.log("courses"+this.CoursesReg.length)
+      console.log("courses" + this.CoursesReg.length)
+      this.user = JSON.parse(localStorage.getItem("user") || "{}");
       this.totalHours = this.totalhours();
-      if(this.CoursesReg.length===0){
+      // if (this.CoursesReg.length === 0) {
+      // }
+
+      this.coureseSub = this.coursesServices.getCourses().subscribe((c) => {
+        this.Courses = c;
+        console.log("courses" + c.length)
+        console.log(this.user)
         this.copyCourses(this.user.email)
-      }
+      })
     })
-
-
-
-
   }
+
   copyCourses(email: string) {
     let x = false;
+    console.log(email)
     this.Courses.forEach(element => {
-      x=this.CoursesReg.some((c)=>{
-        return element.name === c.course_name && email === c.student_email;
+      x = this.CoursesReg.some((c) => {
+        return element.name == c.course_name && email == c.student_email;
       })
+      console.log(x);
       if (x === false) {
         this.coursesServices.updateRegisterationRequests({
           course_name: element.name,
@@ -58,7 +56,7 @@ export class CourseRegisterationComponent {
         console.log("course added")
       }
       x = false;
-    }); 
+    });
   }
   totalhours() {
     let total = 0;
@@ -80,6 +78,6 @@ export class CourseRegisterationComponent {
   }
   ngOnDestroy() {
     this.coureseRegSub.unsubscribe();
-    this.coureseSub.unsubscribe();
+    this.coureseSub?.unsubscribe();
   }
 }

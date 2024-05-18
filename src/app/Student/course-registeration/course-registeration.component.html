@@ -1,9 +1,9 @@
 <section>
     <div class="mycontainer">
         <div class="course_page">
-            <div class="courses" >
-                <div class="course_item"*ngFor="let course of CoursesReg" >
-                    <div *ngIf="course.student_email===user.email">
+            <div class="courses">
+                <div *ngFor="let course of CoursesReg">
+                    <div class="course_item" *ngIf="course.student_email===user.email">
                         <div>
                             <h4>Course:</h4>
                             <span>{{course.course_name}}</span>
@@ -13,10 +13,10 @@
                             <span>{{course.hours}}</span>
                         </div>
                         <button (click)="toggleSelection(course)">
-                          {{ course.isSelected ?  'UnSelecte' : 'Selecte' }}</button>
+                            {{ course.isSelected ? 'UnSelecte' : 'Selecte' }}</button>
                     </div>
                 </div><!-- close course_item -->
-                
+
             </div><!-- close courses -->
             <div class="hours">
                 <div class="houre_item">
